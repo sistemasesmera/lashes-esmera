@@ -1,0 +1,122 @@
+---
+import logo from "../assets/logo-blanco.png";
+---
+
+<nav
+  class="bg-[#f1cdf0] fixed top-0 left-0 w-full z-50 shadow-sm border-b border-white/30"
+>
+  <div class="max-w-6xl mx-auto flex justify-between items-center h-20 px-6">
+    <!-- Logo -->
+    <a href="/" class="flex items-center">
+      <img src={logo.src} alt="Lashes Esmera" class="h-12 object-contain" />
+    </a>
+
+    <!-- Desktop Menu -->
+    <ul class="hidden lg:flex items-center gap-8 text-black font-medium">
+      <li><a href="/" class="hover:text-gray-600 transition">Inicio</a></li>
+      <li>
+        <a href="/servicios" class="hover:text-gray-600 transition"
+          >Servicios</a>
+      </li>
+      <li>
+        <a href="/formacion" class="hover:text-gray-600 transition"
+          >Formación</a>
+      </li>
+      <li>
+        <a
+          href="https://tienda.lashesesmera.com"
+          class="hover:text-gray-600 transition"
+        >
+          Tienda
+        </a>
+      </li>
+      <li>
+        <a href="/sobre-nosotros" class="hover:text-gray-600 transition"
+          >Nosotros</a>
+      </li>
+      <li>
+        <a href="/contacto" class="hover:text-gray-600 transition">Contacto</a>
+      </li>
+    </ul>
+
+    <!-- CTA Desktop -->
+    <a
+      href="https://wa.me/34600000000"
+      class="hidden lg:block bg-black text-white px-5 py-2 rounded-full text-sm hover:bg-gray-800 transition"
+    >
+      Reservar cita
+    </a>
+
+    <!-- Mobile Button -->
+    <button id="menu-toggle" class="lg:hidden text-black">
+      <svg class="w-7 h-7" fill="none" stroke="currentColor">
+        <path
+          d="M4 6h16M4 12h16M4 18h16"
+          stroke-width="2"
+          stroke-linecap="round"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu (LIMPIO Y PREMIUM) -->
+  <div
+    id="mobile-menu"
+    class="lg:hidden hidden bg-white px-6 py-6 space-y-6 text-black shadow-md rounded-b-2xl"
+  >
+    <a href="/" class="block text-lg font-medium hover:text-gray-500 transition"
+      >Inicio</a
+    >
+
+    <a
+      href="/servicios"
+      class="block text-lg font-medium hover:text-gray-500 transition"
+    >
+      Servicios
+    </a>
+
+    <a
+      href="/formacion"
+      class="block text-lg font-medium hover:text-gray-500 transition"
+    >
+      Formación
+    </a>
+
+    <a
+      href="https://tienda.lashesesmera.com"
+      class="block text-lg font-medium hover:text-gray-500 transition"
+    >
+      Tienda
+    </a>
+
+    <a
+      href="/sobre-nosotros"
+      class="block text-lg font-medium hover:text-gray-500 transition"
+    >
+      Nosotros
+    </a>
+
+    <a
+      href="/contacto"
+      class="block text-lg font-medium hover:text-gray-500 transition"
+    >
+      Contacto
+    </a>
+
+    <!-- CTA móvil -->
+    <a
+      href="https://wa.me/34600000000"
+      class="block text-center bg-black text-white py-3 rounded-full mt-6 text-sm hover:bg-gray-800 transition"
+    >
+      Reservar cita
+    </a>
+  </div>
+</nav>
+
+<script is:inline>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+
+  toggle?.addEventListener("click", () => {
+    menu?.classList.toggle("hidden");
+  });
+</script>

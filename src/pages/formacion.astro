@@ -1,112 +1,219 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const cursos = await getCollection("cursos");
+
+
+// ordenar por order
+const cursosOrdenados = cursos.sort(
+  (a, b) => (a.data.order ?? 0) - (b.data.order ?? 0)
+);
+---
+
 ---
 
 <Layout
   title="Cursos de cejas y pestañas en Madrid | Lashes Esmera"
-  description="Fórmate en extensiones de pestañas, volumen ruso, lifting y cejas. Cursos profesionales en Madrid con formación práctica y real."
+  description="Fórmate en extensiones de pestañas, volumen ruso, lifting y cejas. Cursos profesionales en Madrid y online."
   canonical="https://lashesesmera.com/formacion"
-/>
-<!-- HERO -->
-<section class="bg-[#f1cdf0] pt-32 pb-20 px-6 text-center">
-  <h1 class="text-4xl md:text-5xl font-bold text-black mb-6">
-    Conviértete en lash artist profesional
-  </h1>
+>
+  <!-- HERO -->
+<section class="relative h-[80vh] min-h-[500px] flex items-center justify-center text-center">
 
-  <p class="text-lg text-gray-800 max-w-xl mx-auto mb-8">
-    Formación especializada en cejas y pestañas con técnicas actuales y enfoque
-    profesional.
-  </p>
+  <!-- IMAGEN DE FONDO -->
+  <img
+    src="/courses/hero-formacion.png"
+    alt="Cursos de cejas y pestañas en Madrid"
+    class="absolute inset-0 w-full h-full object-cover"
+  />
 
-  <a
-    href="#formulario"
-    class="bg-black text-white px-8 py-3 rounded-full text-sm hover:bg-gray-800 transition"
-  >
-    Quiero información
-  </a>
-</section>
+  <!-- OVERLAY (DEGRADADO PRO) -->
+  <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
 
-<!-- CURSOS -->
-<section class="py-24 px-6 max-w-6xl mx-auto text-center">
-  <h2 class="text-3xl font-semibold mb-12">Nuestros cursos</h2>
-
-  <div class="grid md:grid-cols-3 gap-8">
-    <!-- 1 -->
-    <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition">
-      <div class="h-40 bg-gray-200 rounded-xl mb-4"></div>
-      <h3 class="font-semibold mb-2">Curso básico extensiones</h3>
-      <p class="text-gray-600 text-sm mb-3">Desde cero, ideal para empezar.</p>
-      <span class="text-sm font-semibold">Desde 300€</span>
-    </div>
-
-    <!-- 2 -->
-    <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition">
-      <div class="h-40 bg-gray-200 rounded-xl mb-4"></div>
-      <h3 class="font-semibold mb-2">Volumen ruso</h3>
-      <p class="text-gray-600 text-sm mb-3">Técnicas avanzadas de volumen.</p>
-      <span class="text-sm font-semibold">Desde 500€</span>
-    </div>
-
-    <!-- 3 -->
-    <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition">
-      <div class="h-40 bg-gray-200 rounded-xl mb-4"></div>
-      <h3 class="font-semibold mb-2">Lifting de pestañas</h3>
-      <p class="text-gray-600 text-sm mb-3">
-        Resultados naturales y duraderos.
-      </p>
-      <span class="text-sm font-semibold">Consultar</span>
-    </div>
-
-    <!-- 4 -->
-    <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition">
-      <div class="h-40 bg-gray-200 rounded-xl mb-4"></div>
-      <h3 class="font-semibold mb-2">Laminado de cejas</h3>
-      <p class="text-gray-600 text-sm mb-3">Diseño y fijación profesional.</p>
-      <span class="text-sm font-semibold">Consultar</span>
-    </div>
-
-    <!-- 5 -->
-    <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition">
-      <div class="h-40 bg-gray-200 rounded-xl mb-4"></div>
-      <h3 class="font-semibold mb-2">Pack completo</h3>
-      <p class="text-gray-600 text-sm mb-3">
-        Formación completa + técnicas avanzadas.
-      </p>
-      <span class="text-sm font-semibold">Desde 900€</span>
-    </div>
-
-    <!-- 6 -->
-    <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition">
-      <div class="h-40 bg-gray-200 rounded-xl mb-4"></div>
-      <h3 class="font-semibold mb-2">Masterclass</h3>
-      <p class="text-gray-600 text-sm mb-3">Perfeccionamiento intensivo.</p>
-      <span class="text-sm font-semibold">Consultar</span>
-    </div>
+  <!-- CONTENIDO -->
+  <div class="relative z-10 px-6 max-w-2xl text-white">
+    <!-- MINI TEXTO -->
+    <span class="text-xs uppercase tracking-widest text-gray-300">
+      Formación Profesional
+    </span>
+  
+    <!-- TITULO -->
+    <h1 class="text-4xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
+      Domina el estilismo de cejas y pestañas
+    </h1>
+  
+    <!-- DESCRIPCIÓN -->
+    <p class="text-lg text-gray-200 mb-8">
+      Aprende técnicas avanzadas de lifting, laminado y extensiones de pestañas
+      para ofrecer servicios profesionales de alta demanda y elevar tu perfil
+      como lash artist.
+    </p>
+  
+    <!-- CTA -->
+    <a
+      href="#formulario"
+      class="bg-white text-black px-8 py-3 rounded-full text-sm font-medium hover:bg-gray-200 transition"
+    >
+      Reserva tu plaza ahora
+    </a>
   </div>
 </section>
 
-<!-- BENEFICIOS -->
-<section class="bg-gray-50 py-20 px-6 text-center">
-  <h2 class="text-3xl font-semibold mb-10">¿Por qué formarte con nosotros?</h2>
+  <!-- BENEFICIOS -->
+  <section class="bg-gray-50 py-16 px-6 text-center">
+    <h2 class="text-3xl md:text-4xl font-semibold mb-6">
+      ¿Por qué formarte con nosotros?
+    </h2>
 
-  <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-    <div>
-      <h3 class="font-semibold mb-2">100% práctico</h3>
-      <p class="text-gray-600 text-sm">
-        Aprendes trabajando desde el primer día.
-      </p>
-    </div>
+    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <!-- 1 -->
+      <div
+        class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition"
+      >
+        <div
+          class="w-12 h-12 mx-auto mb-4 flex items-center justify-center rounded-full bg-black text-white"
+        >
+          <!-- Icono -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M12 20h9"></path>
+            <path d="M12 4v16"></path>
+            <path d="M4 9l8-5 8 5"></path>
+          </svg>
+        </div>
 
-    <div>
-      <h3 class="font-semibold mb-2">Experiencia real</h3>
-      <p class="text-gray-600 text-sm">
-        Más de 20 años formando profesionales.
-      </p>
-    </div>
+        <h3 class="font-semibold mb-2 text-lg">100% práctico</h3>
+        <p class="text-gray-600 text-sm">
+          Aprendes trabajando desde el primer día con modelos reales.
+        </p>
+      </div>
 
-    <div>
-      <h3 class="font-semibold mb-2">Alta rentabilidad</h3>
-      <p class="text-gray-600 text-sm">Convierte tu formación en ingresos.</p>
+      <!-- 2 -->
+      <div
+        class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition"
+      >
+        <div
+          class="w-12 h-12 mx-auto mb-4 flex items-center justify-center rounded-full bg-black text-white"
+        >
+          <!-- Icono -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 6v6l4 2"></path>
+          </svg>
+        </div>
+
+        <h3 class="font-semibold mb-2 text-lg">Experiencia real</h3>
+        <p class="text-gray-600 text-sm">
+          Más de 20 años formando profesionales en el sector beauty.
+        </p>
+      </div>
+
+      <!-- 3 -->
+      <div
+        class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition"
+      >
+        <div
+          class="w-12 h-12 mx-auto mb-4 flex items-center justify-center rounded-full bg-black text-white"
+        >
+          <!-- Icono -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M12 1v22"></path>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"></path>
+          </svg>
+        </div>
+
+        <h3 class="font-semibold mb-2 text-lg">Alta rentabilidad</h3>
+        <p class="text-gray-600 text-sm">
+          Convierte tu formación en una fuente real de ingresos.
+        </p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- CURSOS (TIENDA) -->
+  <section class="py-8 px-6 max-w-6xl mx-auto text-center">
+    <h2 class="text-3xl font-semibold mb-12">Nuestros cursos</h2>
+  
+    <div class="grid md:grid-cols-3 gap-8">
+      {
+        cursosOrdenados.map((curso) => (
+          <a
+            href={`/formacion/${curso.id}`}
+            class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 text-left group overflow-hidden"
+          >
+            <!-- IMAGEN -->
+            <div class="aspect-[2/1] overflow-hidden">
+              <img
+                src={curso.data.thumbnail}
+                alt={curso.data.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+              />
+            </div>
+  
+            <!-- CONTENIDO -->
+            <div class="p-6">
+              <!-- ETIQUETA -->
+              <span
+                class={`text-xs px-3 py-1 rounded-full ${
+                  curso.data.modality === "Online"
+                    ? "bg-pink-500 text-white"
+                    : "bg-black text-white"
+                }`}
+              >
+                {curso.data.modality}
+              </span>
+  
+              <h3 class="font-semibold mt-4 mb-2 text-lg leading-snug">
+                {curso.data.title}
+              </h3>
+  
+              <p class="text-gray-600 text-sm mb-4">
+                {curso.data.short_description}
+              </p>
+  
+              <!-- BENEFICIOS -->
+              {
+                curso.data.benefits && (
+                  <ul class="text-xs text-gray-500 mb-4 space-y-1">
+                    {curso.data.benefits.slice(0, 2).map((b) => (
+                      <li>✔ {b}</li>
+                    ))}
+                  </ul>
+                )
+              }
+  
+              <!-- CTA -->
+              <div class="flex items-center justify-between mt-4">
+                <span class="text-sm font-medium">
+                  Ver curso
+                </span>
+  
+                <span class="text-lg group-hover:translate-x-1 transition">
+                  →
+                </span>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

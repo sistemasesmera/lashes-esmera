@@ -4,134 +4,141 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout
   title="Contacto Lashes Esmera | Reserva cita o solicita información"
-  description="Contacta con Lashes Esmera en Madrid. Reserva tu cita o solicita información sobre nuestros servicios y formación en cejas y pestañas."
+  description="Contacta con Lashes Esmera en Madrid. Reserva tu cita o solicita información sobre nuestros servicios, formación y productos."
   canonical="https://lashesesmera.com/contacto"
-/>
+>
   <!-- HERO -->
-  <section class="bg-[#f1cdf0] pt-32 pb-20 px-6 text-center">
-    <h1 class="text-4xl md:text-5xl font-bold text-black mb-6">
-      Contacto
+  <section
+    class="bg-gradient-to-b from-[#f1cdf0] to-white pt-32 pb-4 px-6 text-center"
+  >
+    <h1 class="text-4xl md:text-5xl font-semibold text-gray-900 mb-4">
+      ¿Cómo podemos ayudarte?
     </h1>
 
-    <p class="text-lg text-gray-800 max-w-xl mx-auto mb-8">
-      Estamos aquí para ayudarte. Escríbenos o visítanos en nuestro centro.
+    <p class="text-lg text-gray-600 max-w-xl mx-auto">
+      Elige una opción o escríbenos directamente. Te asesoramos de forma
+      personalizada.
     </p>
-
-    <a 
-      href="https://wa.me/34600000000"
-      class="bg-black text-white px-8 py-3 rounded-full text-sm hover:bg-gray-800 transition"
-    >
-      Escribir por WhatsApp
-    </a>
   </section>
 
-  <!-- INFORMACIÓN -->
-  <section class="py-24 px-6 max-w-6xl mx-auto">
+  <!-- OPCIONES -->
+  <section class="py-16 px-6 bg-white">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
+      <!-- SERVICIOS -->
+      <a
+        href="https://wa.me/34600000000?text=Hola,%20quiero%20reservar%20una%20cita"
+        class="p-6 rounded-2xl border border-gray-200 hover:shadow-xl transition text-center group"
+      >
+        <h3 class="text-lg font-semibold mb-2">Reservar cita</h3>
+        <p class="text-sm text-gray-500 mb-4">Servicios de cejas y pestañas</p>
+        <span class="text-green-600 font-medium group-hover:underline">
+          Reservar →
+        </span>
+      </a>
 
-    <div class="grid md:grid-cols-3 gap-10 text-center">
+      <!-- FORMACIÓN -->
+      <a
+        href="https://wa.me/34600000000?text=Hola,%20quiero%20información%20sobre%20formación"
+        class="p-6 rounded-2xl border border-gray-200 hover:shadow-xl transition text-center group"
+      >
+        <h3 class="text-lg font-semibold mb-2">Formación</h3>
+        <p class="text-sm text-gray-500 mb-4">Cursos profesionales</p>
+        <span class="text-green-600 font-medium group-hover:underline">
+          Solicitar info →
+        </span>
+      </a>
 
-      <div>
-        <h3 class="font-semibold mb-2">Teléfono</h3>
-        <p class="text-gray-600 text-sm">+34 600 00 00 00</p>
-      </div>
-
-      <div>
-        <h3 class="font-semibold mb-2">Email</h3>
-        <p class="text-gray-600 text-sm">info@lashesesmera.com</p>
-      </div>
-
-      <div>
-        <h3 class="font-semibold mb-2">Ubicación</h3>
-        <p class="text-gray-600 text-sm">Madrid, España</p>
-      </div>
-
+      <!-- TIENDA -->
+      <a
+        href="https://wa.me/34600000000?text=Hola,%20quiero%20información%20sobre%20productos"
+        class="p-6 rounded-2xl border border-gray-200 hover:shadow-xl transition text-center group"
+      >
+        <h3 class="text-lg font-semibold mb-2">Tienda</h3>
+        <p class="text-sm text-gray-500 mb-4">Productos profesionales</p>
+        <span class="text-green-600 font-medium group-hover:underline">
+          Consultar →
+        </span>
+      </a>
     </div>
-
   </section>
 
-  <!-- FORMULARIO -->
-  <section class="bg-gray-50 py-24 px-6">
-
-    <div class="max-w-4xl mx-auto text-center mb-10">
-      <h2 class="text-3xl font-semibold mb-4">
-        Escríbenos
-      </h2>
-
-      <p class="text-gray-600">
-        Déjanos tu mensaje y te responderemos lo antes posible.
-      </p>
-    </div>
-
-    <div class="max-w-xl mx-auto">
-      <form id="contact-form" class="space-y-5">
-
-        <input
-          type="text"
-          name="nombre"
-          placeholder="Nombre"
-          class="w-full px-5 py-3 rounded-full bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black transition"
-          required
+  <!-- CONTACTO -->
+  <section class="py-20 px-6 bg-gray-50">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <!-- IMAGEN -->
+      <div class="relative group">
+        <img
+          src="/contacto/image.png"
+          alt="Contacto Lashes Esmera"
+          class="rounded-2xl object-cover w-full h-[450px] shadow-lg transition duration-500 group-hover:scale-[1.02]"
         />
-
-        <input
-          type="tel"
-          name="telefono"
-          placeholder="Teléfono"
-          class="w-full px-5 py-3 rounded-full bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black transition"
-        />
-
-        <textarea
-          name="mensaje"
-          placeholder="Escribe tu mensaje..."
-          rows="4"
-          class="w-full px-5 py-3 rounded-2xl bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black transition"
-          required
-        ></textarea>
-
-        <button
-          type="submit"
-          class="w-full bg-black text-white py-3 rounded-full hover:bg-gray-800 transition text-sm"
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"
         >
-          Enviar mensaje
-        </button>
+        </div>
 
-      </form>
+        <div class="absolute bottom-6 left-6 text-white">
+          <p class="text-sm opacity-90">Atención personalizada</p>
+          <p class="text-lg font-semibold">Resultados profesionales</p>
+        </div>
+      </div>
+
+      <!-- FORMULARIO -->
+      <div
+        class="bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-gray-100"
+      >
+        <h2 class="text-2xl font-semibold mb-2 text-gray-900">
+          ¿Tienes dudas? Te ayudamos
+        </h2>
+
+        <p class="text-sm text-gray-500 mb-6">
+          También puedes escribirnos directamente aquí
+        </p>
+
+        <form id="contact-form" class="space-y-5">
+          <input
+            type="text"
+            name="nombre"
+            placeholder="Nombre"
+            required
+            class="w-full px-5 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-gray-300 transition"
+          />
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Correo electrónico"
+            required
+            class="w-full px-5 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-gray-300 transition"
+          />
+
+          <input
+            type="tel"
+            name="telefono"
+            placeholder="Teléfono"
+            required
+            class="w-full px-5 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-gray-300 transition"
+          />
+
+          <textarea
+            name="mensaje"
+            placeholder="Cuéntanos en qué podemos ayudarte..."
+            rows="4"
+            required
+            class="w-full px-5 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-gray-300 transition resize-none"
+          ></textarea>
+
+          <button
+            type="submit"
+            class="w-full bg-black hover:bg-gray-800 text-white font-semibold py-3 rounded-lg shadow-md hover:shadow-lg transition transform hover:scale-[1.02]"
+          >
+            Enviar información
+          </button>
+        </form>
+      </div>
     </div>
-
   </section>
 
-  <!-- MAPA (SIMULADO) -->
-  <section class="py-24 px-6 max-w-6xl mx-auto">
-
-    <h2 class="text-3xl font-semibold text-center mb-10">
-      Dónde estamos
-    </h2>
-
-    <div class="w-full h-80 bg-gray-200 rounded-xl flex items-center justify-center">
-      <span class="text-gray-500">Mapa (Google Maps aquí)</span>
-    </div>
-
-  </section>
-
-  <!-- CTA FINAL -->
-  <section class="bg-[#f1cdf0] py-16 px-6 text-center">
-    
-    <h2 class="text-2xl font-semibold mb-4">
-      ¿Prefieres hablar directamente?
-    </h2>
-
-    <p class="text-gray-800 mb-6">
-      Escríbenos por WhatsApp y te ayudamos al momento.
-    </p>
-
-    <a 
-      href="https://wa.me/34600000000"
-      class="bg-black text-white px-8 py-3 rounded-full text-sm hover:bg-gray-800 transition"
-    >
-      Abrir WhatsApp
-    </a>
-
-  </section>
 
 </Layout>
 
@@ -140,21 +147,21 @@ import Layout from "../layouts/Layout.astro";
 
   form?.addEventListener("submit", (e) => {
     e.preventDefault();
-
     const data = new FormData(form);
 
-    const nombre = data.get("nombre");
-    const telefono = data.get("telefono");
-    const mensaje = data.get("mensaje");
+    const nombre = data.get("nombre") || "";
+    const email = data.get("email") || "";
+    const telefono = data.get("telefono") || "";
+    const mensaje = data.get("mensaje") || "";
 
     const texto = `Hola, contacto desde la web:
 
 Nombre: ${nombre}
+Email: ${email}
 Teléfono: ${telefono}
 Mensaje: ${mensaje}`;
 
     const url = `https://wa.me/34600000000?text=${encodeURIComponent(texto)}`;
-
     window.open(url, "_blank");
   });
 </script>

@@ -1,112 +1,92 @@
 ---
 import logo from "../assets/logo-blanco.png";
+const p = Astro.url.pathname;
 ---
 
-<nav
-  class="bg-[#f1cdf0] fixed top-8 left-0 w-full z-50 shadow-sm border-b border-white/30"
->
+<nav class="bg-[#f1cdf0] w-full border-b border-black/5">
   <div class="max-w-6xl mx-auto flex justify-between items-center h-20 px-6">
+
     <!-- Logo -->
-    <a href="/" class="flex items-center">
-      <img src={logo.src} alt="Lashes Esmera" class="h-12 object-contain" />
+    <a href="/" class="flex items-center flex-shrink-0">
+      <img src={logo.src} alt="Lashes Esmera" class="h-11 object-contain" />
     </a>
 
     <!-- Desktop Menu -->
-    <ul class="hidden lg:flex items-center gap-8 text-black font-medium">
-      <li><a href="/" class="hover:text-gray-600 transition">Inicio</a></li>
+    <ul class="hidden lg:flex items-center gap-8">
       <li>
-        <a href="/servicios" class="hover:text-gray-600 transition">Servicios</a
-        >
+        <a
+          href="/"
+          class={`text-sm transition-opacity hover:opacity-60 ${p === "/" ? "font-semibold" : "font-medium"}`}
+        >Inicio</a>
       </li>
       <li>
-        <a href="/formacion" class="hover:text-gray-600 transition">Formación</a
-        >
+        <a
+          href="/servicios"
+          class={`text-sm transition-opacity hover:opacity-60 ${p.startsWith("/servicios") ? "font-semibold" : "font-medium"}`}
+        >Servicios</a>
+      </li>
+      <li>
+        <a
+          href="/formacion"
+          class={`text-sm transition-opacity hover:opacity-60 ${p.startsWith("/formacion") ? "font-semibold" : "font-medium"}`}
+        >Formación</a>
       </li>
       <li>
         <a
           href="https://tienda.lashesesmera.com"
-          class="hover:text-gray-600 transition"
-        >
-          Tienda
-        </a>
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm font-medium transition-opacity hover:opacity-60"
+        >Tienda</a>
       </li>
       <li>
-        <a href="/sobre-nosotros" class="hover:text-gray-600 transition"
-          >Nosotros</a
-        >
+        <a
+          href="/sobre-nosotros"
+          class={`text-sm transition-opacity hover:opacity-60 ${p.startsWith("/sobre-nosotros") ? "font-semibold" : "font-medium"}`}
+        >Nosotros</a>
       </li>
       <li>
-        <a href="/contacto" class="hover:text-gray-600 transition">Contacto</a>
+        <a
+          href="/contacto"
+          class={`text-sm transition-opacity hover:opacity-60 ${p.startsWith("/contacto") ? "font-semibold" : "font-medium"}`}
+        >Contacto</a>
       </li>
     </ul>
 
     <!-- CTA Desktop -->
     <a
       href="https://wa.me/34600000000"
-      class="hidden lg:block bg-black text-white px-5 py-2 rounded-full text-sm hover:bg-gray-800 transition"
+      class="hidden lg:block bg-black text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-gray-800 transition"
     >
       Reservar cita
     </a>
 
     <!-- Mobile Button -->
-    <button id="menu-toggle" class="lg:hidden text-black">
-      <svg class="w-7 h-7" fill="none" stroke="currentColor">
-        <path
-          d="M4 6h16M4 12h16M4 18h16"
-          stroke-width="2"
-          stroke-linecap="round"></path>
+    <button
+      id="menu-toggle"
+      class="lg:hidden text-black p-1.5 rounded-md hover:bg-black/5 transition"
+      aria-label="Abrir menú"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
   </div>
 
-  <!-- Mobile Menu (LIMPIO Y PREMIUM) -->
+  <!-- Mobile Menu -->
   <div
     id="mobile-menu"
-    class="lg:hidden hidden bg-white px-6 py-6 space-y-6 text-black shadow-md rounded-b-2xl"
+    class="lg:hidden hidden bg-white border-t border-gray-100 px-6 py-6 space-y-5 shadow-xl rounded-b-2xl"
   >
-    <a href="/" class="block text-lg font-medium hover:text-gray-500 transition"
-      >Inicio</a
-    >
-
-    <a
-      href="/servicios"
-      class="block text-lg font-medium hover:text-gray-500 transition"
-    >
-      Servicios
-    </a>
-
-    <a
-      href="/formacion"
-      class="block text-lg font-medium hover:text-gray-500 transition"
-    >
-      Formación
-    </a>
-
-    <a
-      href="https://tienda.lashesesmera.com"
-      class="block text-lg font-medium hover:text-gray-500 transition"
-    >
-      Tienda
-    </a>
-
-    <a
-      href="/sobre-nosotros"
-      class="block text-lg font-medium hover:text-gray-500 transition"
-    >
-      Nosotros
-    </a>
-
-    <a
-      href="/contacto"
-      class="block text-lg font-medium hover:text-gray-500 transition"
-    >
-      Contacto
-    </a>
-
-    <!-- CTA móvil -->
+    <a href="/" class="block text-base font-medium text-gray-800 hover:text-black transition">Inicio</a>
+    <a href="/servicios" class="block text-base font-medium text-gray-800 hover:text-black transition">Servicios</a>
+    <a href="/formacion" class="block text-base font-medium text-gray-800 hover:text-black transition">Formación</a>
+    <a href="https://tienda.lashesesmera.com" target="_blank" rel="noopener noreferrer" class="block text-base font-medium text-gray-800 hover:text-black transition">Tienda</a>
+    <a href="/sobre-nosotros" class="block text-base font-medium text-gray-800 hover:text-black transition">Nosotros</a>
+    <a href="/contacto" class="block text-base font-medium text-gray-800 hover:text-black transition">Contacto</a>
     <a
       href="https://wa.me/34600000000"
-      class="block text-center bg-black text-white py-3 rounded-full mt-6 text-sm hover:bg-gray-800 transition"
+      class="block text-center bg-black text-white py-3 rounded-full text-sm font-medium hover:bg-gray-800 transition"
     >
       Reservar cita
     </a>
@@ -116,7 +96,6 @@ import logo from "../assets/logo-blanco.png";
 <script is:inline>
   const toggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("mobile-menu");
-
   toggle?.addEventListener("click", () => {
     menu?.classList.toggle("hidden");
   });

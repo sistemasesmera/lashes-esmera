@@ -3,14 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
 const cursos = await getCollection("cursos");
-
-
-// ordenar por order
 const cursosOrdenados = cursos.sort(
   (a, b) => (a.data.order ?? 0) - (b.data.order ?? 0)
 );
----
-
 ---
 
 <Layout
@@ -18,202 +13,163 @@ const cursosOrdenados = cursos.sort(
   description="Fórmate en extensiones de pestañas, volumen ruso, lifting y cejas. Cursos profesionales en Madrid y online."
   canonical="https://lashesesmera.com/formacion"
 >
-  <!-- HERO -->
-<section class="relative h-[80vh] min-h-[500px] flex items-center justify-center text-center">
 
-  <!-- IMAGEN DE FONDO -->
-  <img
-    src="/courses/hero-formacion.png"
-    alt="Cursos de cejas y pestañas en Madrid"
-    class="absolute inset-0 w-full h-full object-cover"
-  />
+  <!-- ─── HERO ─────────────────────────────────────────────────── -->
+  <section class="relative h-[88vh] min-h-[560px] flex items-center overflow-hidden">
 
-  <!-- OVERLAY (DEGRADADO PRO) -->
-  <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+    <img
+      src="/courses/hero-formacion.png"
+      alt="Cursos de cejas y pestañas en Madrid"
+      class="absolute inset-0 w-full h-full object-cover scale-[1.02]"
+    />
 
-  <!-- CONTENIDO -->
-  <div class="relative z-10 px-6 max-w-2xl text-white">
-    <!-- MINI TEXTO -->
-    <span class="text-xs uppercase tracking-widest text-gray-300">
-      Formación Profesional
-    </span>
-  
-    <!-- TITULO -->
-    <h1 class="text-4xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
-      Domina el estilismo de cejas y pestañas
-    </h1>
-  
-    <!-- DESCRIPCIÓN -->
-    <p class="text-lg text-gray-200 mb-8">
-      Aprende técnicas avanzadas de lifting, laminado y extensiones de pestañas
-      para ofrecer servicios profesionales de alta demanda y elevar tu perfil
-      como lash artist.
-    </p>
-  
-    <!-- CTA -->
-    <a
-      href="#formulario"
-      class="bg-white text-black px-8 py-3 rounded-full text-sm font-medium hover:bg-gray-200 transition"
-    >
-      Reserva tu plaza ahora
-    </a>
-  </div>
-</section>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-black/15"></div>
 
-  <!-- BENEFICIOS -->
-  <section class="bg-gray-50 py-16 px-6 text-center">
-    <h2 class="text-3xl md:text-4xl font-semibold mb-6">
-      ¿Por qué formarte con nosotros?
-    </h2>
-
-    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-      <!-- 1 -->
-      <div
-        class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition"
-      >
-        <div
-          class="w-12 h-12 mx-auto mb-4 flex items-center justify-center rounded-full bg-black text-white"
-        >
-          <!-- Icono -->
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path d="M12 20h9"></path>
-            <path d="M12 4v16"></path>
-            <path d="M4 9l8-5 8 5"></path>
-          </svg>
-        </div>
-
-        <h3 class="font-semibold mb-2 text-lg">100% práctico</h3>
-        <p class="text-gray-600 text-sm">
-          Aprendes trabajando desde el primer día con modelos reales.
+    <div class="relative z-10 w-full max-w-6xl mx-auto px-6">
+      <div class="md:max-w-[55%]">
+        <p class="text-[#f1cdf0] text-xs uppercase tracking-[0.45em] font-medium mb-7">
+          Formación Profesional · Madrid
         </p>
-      </div>
-
-      <!-- 2 -->
-      <div
-        class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition"
-      >
-        <div
-          class="w-12 h-12 mx-auto mb-4 flex items-center justify-center rounded-full bg-black text-white"
-        >
-          <!-- Icono -->
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <circle cx="12" cy="12" r="10"></circle>
-            <path d="M12 6v6l4 2"></path>
-          </svg>
-        </div>
-
-        <h3 class="font-semibold mb-2 text-lg">Experiencia real</h3>
-        <p class="text-gray-600 text-sm">
-          Más de 20 años formando profesionales en el sector beauty.
+        <h1 class="text-[clamp(2.6rem,6vw,5rem)] font-bold text-white leading-[1.0] tracking-tight mb-7">
+          Domina el arte<br/>de la mirada.
+        </h1>
+        <p class="text-white/60 text-base md:text-lg leading-relaxed mb-10 max-w-sm">
+          Aprende lifting, laminado y extensiones de pestañas con más de 20 años de experiencia a tu lado.
         </p>
-      </div>
-
-      <!-- 3 -->
-      <div
-        class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition"
-      >
-        <div
-          class="w-12 h-12 mx-auto mb-4 flex items-center justify-center rounded-full bg-black text-white"
+        <a
+          href="#cursos"
+          class="bg-white text-black px-9 py-3.5 rounded-full text-sm font-semibold tracking-wide hover:bg-gray-100 transition inline-block"
         >
-          <!-- Icono -->
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path d="M12 1v22"></path>
-            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"></path>
-          </svg>
-        </div>
-
-        <h3 class="font-semibold mb-2 text-lg">Alta rentabilidad</h3>
-        <p class="text-gray-600 text-sm">
-          Convierte tu formación en una fuente real de ingresos.
-        </p>
+          Ver cursos disponibles
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- CURSOS (TIENDA) -->
-  <section class="py-8 px-6 max-w-6xl mx-auto text-center">
-    <h2 class="text-3xl font-semibold mb-12">Nuestros cursos</h2>
-  
-    <div class="grid md:grid-cols-3 gap-8">
-      {
-        cursosOrdenados.map((curso) => (
+
+  <!-- ─── BENEFICIOS (estilo editorial numerado) ────────────────── -->
+  <section class="py-24 px-6 border-b border-gray-100">
+    <div class="max-w-5xl mx-auto">
+
+      <div class="text-center mb-16">
+        <p class="text-xs uppercase tracking-[0.38em] text-gray-400 font-medium mb-4">Por qué elegirnos</p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight">¿Por qué formarte con nosotros?</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-gray-100">
+
+        <div class="py-10 md:py-0 md:px-12 first:pl-0 last:pr-0">
+          <span class="text-[clamp(3rem,6vw,4.5rem)] font-bold text-gray-100 leading-none block mb-4 tracking-tight">01</span>
+          <h3 class="font-bold text-lg mb-3">100% práctico</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            Aprendes trabajando desde el primer día con modelos reales. Sin teoría vacía.
+          </p>
+        </div>
+
+        <div class="py-10 md:py-0 md:px-12">
+          <span class="text-[clamp(3rem,6vw,4.5rem)] font-bold text-gray-100 leading-none block mb-4 tracking-tight">02</span>
+          <h3 class="font-bold text-lg mb-3">Más de 20 años</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            Experiencia real formando profesionales que hoy trabajan en los mejores centros de España.
+          </p>
+        </div>
+
+        <div class="py-10 md:py-0 md:px-12 last:pr-0">
+          <span class="text-[clamp(3rem,6vw,4.5rem)] font-bold text-gray-100 leading-none block mb-4 tracking-tight">03</span>
+          <h3 class="font-bold text-lg mb-3">Alta rentabilidad</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            Convierte tu formación en ingresos reales desde el primer mes de trabajo.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── CURSOS ────────────────────────────────────────────────── -->
+  <section id="cursos" class="py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+
+      <div class="text-center mb-16">
+        <p class="text-xs uppercase tracking-[0.38em] text-gray-400 font-medium mb-4">Programa formativo</p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Nuestros cursos</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {cursosOrdenados.map((curso) => (
           <a
             href={`/formacion/${curso.id}`}
-            class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 text-left group overflow-hidden"
+            class="bg-white border border-gray-100 rounded-2xl hover:border-gray-200 hover:shadow-xl transition-all duration-300 text-left group overflow-hidden flex flex-col"
           >
             <!-- IMAGEN -->
-            <div class="aspect-[2/1] overflow-hidden">
+            <div class="aspect-[4/3] overflow-hidden bg-gray-100">
               <img
                 src={curso.data.thumbnail}
                 alt={curso.data.title}
-                class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                class="w-full h-full object-cover group-hover:scale-105 transition duration-600"
               />
             </div>
-  
+
             <!-- CONTENIDO -->
-            <div class="p-6">
-              <!-- ETIQUETA -->
+            <div class="p-7 flex flex-col flex-1">
               <span
-                class={`text-xs px-3 py-1 rounded-full ${
+                class={`text-[10px] px-3 py-1 rounded-full font-semibold tracking-widest uppercase inline-block w-fit mb-5 ${
                   curso.data.modality === "Online"
-                    ? "bg-pink-500 text-white"
+                    ? "bg-[#f1cdf0] text-black"
                     : "bg-black text-white"
                 }`}
               >
                 {curso.data.modality}
               </span>
-  
-              <h3 class="font-semibold mt-4 mb-2 text-lg leading-snug">
+
+              <h3 class="font-bold text-lg leading-snug mb-3">
                 {curso.data.title}
               </h3>
-  
-              <p class="text-gray-600 text-sm mb-4">
+
+              <p class="text-gray-500 text-sm leading-relaxed mb-5 flex-1">
                 {curso.data.short_description}
               </p>
-  
-              <!-- BENEFICIOS -->
-              {
-                curso.data.benefits && (
-                  <ul class="text-xs text-gray-500 mb-4 space-y-1">
-                    {curso.data.benefits.slice(0, 2).map((b) => (
-                      <li>✔ {b}</li>
-                    ))}
-                  </ul>
-                )
-              }
-  
-              <!-- CTA -->
-              <div class="flex items-center justify-between mt-4">
-                <span class="text-sm font-medium">
-                  Ver curso
-                </span>
-  
-                <span class="text-lg group-hover:translate-x-1 transition">
-                  →
-                </span>
+
+              {curso.data.benefits && (
+                <ul class="text-xs text-gray-400 mb-6 space-y-2">
+                  {curso.data.benefits.slice(0, 2).map((b) => (
+                    <li class="flex items-center gap-2">
+                      <span class="w-3 h-px bg-gray-400 flex-shrink-0 block"></span>
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              <div class="flex items-center justify-between pt-5 border-t border-gray-100">
+                <span class="text-sm font-semibold">Ver curso</span>
+                <span class="text-base group-hover:translate-x-1.5 transition duration-200">→</span>
               </div>
             </div>
           </a>
-        ))
-      }
+        ))}
+      </div>
     </div>
   </section>
+
+
+  <!-- ─── CTA ───────────────────────────────────────────────────── -->
+  <section class="bg-[#f1cdf0] py-24 px-6 text-center">
+    <div class="max-w-lg mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-5 tracking-tight leading-tight">
+        ¿Tienes dudas?<br/>Escríbenos.
+      </h2>
+      <p class="text-gray-700 mb-10 leading-relaxed">
+        Cuéntanos tu situación y te recomendamos el curso que mejor se adapta a ti.
+      </p>
+      <a
+        href="https://wa.me/34600000000"
+        class="bg-black text-white px-10 py-3.5 rounded-full text-sm font-semibold tracking-wide hover:bg-gray-800 transition inline-block"
+      >
+        Consultar por WhatsApp
+      </a>
+    </div>
+  </section>
+
 </Layout>

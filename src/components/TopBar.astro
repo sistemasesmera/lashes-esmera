@@ -2,33 +2,22 @@
 // TopBar.astro
 ---
 
-<div class="bg-gray-900 text-white text-sm">
-  <div
-    class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center py-2 px-4 gap-2 sm:gap-0"
-  >
-    <!-- Información de contacto -->
-    <div class="flex flex-col sm:flex-row items-center gap-4">
-      <span class="flex items-center gap-1">
-        <svg
-          class="w-4 h-4 text-blue-400"
-          fill="currentColor"
-          viewBox="0 0 24 24"
-          ><path d="M2 3h20v18H2V3zm2 2v2h16V5H4zm0 4v10h16V9H4z"></path></svg
-        >
+<div class="hidden md:flex bg-gray-900 text-white text-xs h-9 items-center">
+  <div class="max-w-7xl mx-auto w-full flex justify-between items-center px-6">
+    <div class="flex items-center gap-6 text-gray-300">
+      <a href="mailto:info@lashesesmera.com" class="flex items-center gap-1.5 hover:text-white transition">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
+        </svg>
         info@lashesesmera.com
-      </span>
-      <span class="flex items-center gap-1">
-        <svg
-          class="w-4 h-4 text-blue-400"
-          fill="currentColor"
-          viewBox="0 0 24 24"
-          ><path
-            d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.49 2.53.76 3.87.76a1 1 0 011 1V20a1 1 0 01-1 1C10.48 21 3 13.52 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.34.27 2.66.76 3.87a1 1 0 01-.21 1.11l-2.43 2.43z"
-          ></path></svg
-        >
+      </a>
+      <a href="tel:+34666666666" class="flex items-center gap-1.5 hover:text-white transition">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+        </svg>
         666 666 666
-      </span>
-      <span>Lunes — Viernes: 10:00h - 20:00h</span>
+      </a>
     </div>
+    <span class="text-gray-400">Lunes — Viernes: 10:00h – 20:00h</span>
   </div>
 </div>

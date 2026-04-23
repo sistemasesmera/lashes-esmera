@@ -9,70 +9,148 @@ import Layout from "../layouts/Layout.astro";
 >
 
   <!-- ─── HERO ─────────────────────────────────────────────────── -->
-  <section class="relative min-h-screen flex items-center overflow-hidden">
+  <section class="relative min-h-screen flex items-center overflow-hidden bg-white">
 
-    <img
-      src="/nosotros/hero.png"
-      alt="Lashes Esmera Madrid"
-      class="absolute inset-0 w-full h-full object-cover object-center scale-[1.02]"
-    />
+    <!-- Fondo decorativo: blob suave en esquina superior derecha -->
+    <div
+      class="pointer-events-none absolute top-0 right-0 w-[55%] h-full -z-0"
+      style="background: radial-gradient(ellipse 80% 80% at 85% 30%, rgba(241,205,240,0.18) 0%, transparent 70%);"
+    ></div>
+    <!-- Línea decorativa vertical -->
+    <div class="pointer-events-none absolute top-0 left-[50%] hidden lg:block w-px h-full bg-gradient-to-b from-transparent via-[#f1cdf0]/20 to-transparent -z-0"></div>
 
-    <!-- Overlay: oscuro a la izquierda para legibilidad, abierto a la derecha -->
-    <div class="absolute inset-0" style="background: linear-gradient(105deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.65) 45%, rgba(0,0,0,0.25) 100%)"></div>
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+      <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-20 items-center">
 
-    <div class="relative z-10 w-full max-w-6xl mx-auto px-6 py-40">
-      <div class="md:max-w-[55%]">
+        <!-- COLUMNA IZQUIERDA: Texto -->
+        <div>
+          <div class="hero-eyebrow flex items-center gap-3 mb-8">
+            <span class="block w-7 h-px bg-[#c9a0c7]"></span>
+            <p class="text-[10.5px] uppercase tracking-[0.42em] text-[#b89fb7] font-medium">
+              Madrid · Especialistas en mirada
+            </p>
+          </div>
 
-        <p class="text-[#f1cdf0] text-xs uppercase tracking-[0.45em] font-medium mb-8">
-          Madrid · Especialistas en mirada
-        </p>
+          <h1 class="hero-h1 text-[clamp(3rem,6.5vw,5.2rem)] font-bold leading-[1.0] tracking-tight mb-8" style="color: #2d1229;">
+            La mirada<br/>
+            <em class="not-italic font-light" style="color: #c9a0c7;">que te</em><br/>
+            diferencia.
+          </h1>
 
-        <h1 class="text-[clamp(2.8rem,7vw,5.5rem)] font-bold text-white leading-[1.0] tracking-tight mb-8">
-          La mirada<br/>que te<br/>diferencia.
-        </h1>
+          <p class="hero-p text-base leading-relaxed mb-10 max-w-[340px]" style="color: #9c7a9a;">
+            Formación profesional, servicios especializados y productos para lash artists en Madrid.
+          </p>
 
-        <p class="text-white/65 text-base md:text-lg leading-relaxed mb-12 max-w-sm">
-          Formación profesional, servicios especializados y productos para lash artists en Madrid.
-        </p>
+          <div class="hero-ctas flex flex-wrap gap-3.5">
+            <a
+              href="/formacion"
+              class="text-white px-9 py-3.5 rounded-full text-sm font-semibold tracking-wide transition-all duration-200 hover:scale-105"
+              style="background: linear-gradient(135deg, #c9a0c7 0%, #9c5a96 100%); box-shadow: 0 4px 20px rgba(156,90,150,0.25);"
+            >
+              Ver formación
+            </a>
+            <a
+              href="https://wa.me/34600000000"
+              class="px-9 py-3.5 rounded-full text-sm font-medium tracking-wide transition-all duration-200 hover:scale-105"
+              style="border: 1.5px solid rgba(201,160,199,0.5); color: #7a4a78;"
+              onmouseover="this.style.background='#fdf0fd'; this.style.borderColor='#c9a0c7';"
+              onmouseout="this.style.background=''; this.style.borderColor='rgba(201,160,199,0.5)';"
+            >
+              Reservar cita
+            </a>
+          </div>
 
-        <div class="flex flex-wrap gap-4">
-          <a
-            href="/formacion"
-            class="bg-white text-black px-9 py-3.5 rounded-full text-sm font-semibold tracking-wide hover:bg-gray-100 transition"
+          <!-- Stats mini-row -->
+          <div class="hero-stats mt-12 pt-8 flex items-center gap-8" style="border-top: 1px solid rgba(201,160,199,0.2);">
+            {[
+              { num: 20,  prefix: "+", label: "años de exp." },
+              { num: 500, prefix: "+", label: "alumnas" },
+              { num: 5,   prefix: "",  label: "técnicas" },
+            ].map(s => (
+              <div class="flex flex-col">
+                <span
+                  class="count-num text-2xl font-bold leading-none"
+                  style="color: #2d1229;"
+                  data-count={String(s.num)}
+                  data-prefix={s.prefix}
+                >{s.prefix}0</span>
+                <span class="text-[10px] uppercase tracking-widest mt-1.5" style="color: #c9a0c7;">{s.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- COLUMNA DERECHA: Imagen contenida -->
+        <div class="hero-image relative hidden lg:flex items-center justify-center">
+          <!-- Fondo rosa sólido desplazado (efecto editorial) -->
+          <div
+            class="absolute rounded-[2rem]"
+            style="inset: 0; transform: translate(14px, 18px); background-color: #f1cdf0; opacity: 0.45; z-index: 0;"
+          ></div>
+
+          <!-- Imagen contenida (no es fondo) -->
+          <div class="relative rounded-[2rem] overflow-hidden w-full" style="aspect-ratio: 3/4; z-index: 1;">
+            <img
+              src="/nosotros/hero.png"
+              alt="Estudio Lashes Esmera Madrid"
+              class="w-full h-full object-cover object-center hover:scale-[1.04] transition-transform duration-700"
+            />
+            <!-- Degradado sutil en base -->
+            <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(0,0,0,0.12) 0%, transparent 50%);"></div>
+          </div>
+
+          <!-- Tarjeta flotante inferior-izquierda -->
+          <div
+            class="absolute z-10 bg-white rounded-xl px-5 py-3.5 border border-black/5"
+            style="bottom: -14px; left: -24px; box-shadow: 0 8px 36px rgba(0,0,0,0.10);"
           >
-            Ver formación
-          </a>
-          <a
-            href="https://wa.me/34600000000"
-            class="border border-white/50 text-white px-9 py-3.5 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition"
+            <p class="text-[9.5px] uppercase tracking-[0.3em] text-gray-400 mb-0.5">Centro de referencia</p>
+            <p class="text-sm font-bold text-[#0a0a0a]">Madrid, España</p>
+          </div>
+
+          <!-- Badge superior-derecha -->
+          <div
+            class="absolute z-10 flex items-center gap-1.5 rounded-full pl-3 pr-4 py-2"
+            style="top: -12px; right: -16px; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; background: #f1cdf0; color: #5c2d5a;"
           >
-            Reservar cita
-          </a>
+            <span style="width:6px;height:6px;border-radius:9999px;background:#9c5a96;flex-shrink:0;display:inline-block;"></span>
+            Estudio abierto
+          </div>
         </div>
 
       </div>
     </div>
 
     <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40 z-10">
-      <span class="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
-      <div class="w-px h-10 bg-white/20"></div>
+    <div class="hero-scroll-indicator absolute bottom-6 left-1/2 -translate-x-1/2 z-10">
+      <div class="hero-scroll-inner flex flex-col items-center">
+        <div class="hero-scroll-line w-px h-10 bg-black/12"></div>
+      </div>
     </div>
   </section>
 
 
   <!-- ─── STATS ─────────────────────────────────────────────────── -->
-  <section class="bg-black">
-    <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
+  <section id="stats-section" style="background: #f7f2f7;">
+    <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 divide-x divide-black/6">
       {[
-        { n: "+20", label: "Años de experiencia" },
-        { n: "+500", label: "Alumnas formadas" },
-        { n: "5",   label: "Técnicas especializadas" },
-        { n: "1",   label: "Estudio en Madrid" },
-      ].map((s) => (
-        <div class="flex flex-col items-center justify-center text-center py-10 px-4">
-          <span class="text-3xl md:text-4xl font-bold text-white tracking-tight">{s.n}</span>
-          <span class="text-[10px] text-white/35 uppercase tracking-widest mt-2 leading-tight max-w-[90px]">{s.label}</span>
+        { num: 20,  prefix: "+", label: "Años de experiencia" },
+        { num: 500, prefix: "+", label: "Alumnas formadas" },
+        { num: 5,   prefix: "",  label: "Técnicas especializadas" },
+        { num: 1,   prefix: "",  label: "Estudio en Madrid" },
+      ].map((s, i) => (
+        <div
+          data-animate
+          data-delay={String(i * 120)}
+          class="flex flex-col items-center justify-center text-center py-10 px-4"
+        >
+          <span
+            class="count-num text-3xl md:text-4xl font-bold tracking-tight"
+            style="color: #2d1229;"
+            data-count={String(s.num)}
+            data-prefix={s.prefix}
+          >{s.prefix}0</span>
+          <span class="text-[10px] uppercase tracking-widest mt-2 leading-tight max-w-[90px]" style="color: #b89fb7;">{s.label}</span>
         </div>
       ))}
     </div>
@@ -80,16 +158,16 @@ import Layout from "../layouts/Layout.astro";
 
 
   <!-- ─── FORMACIÓN ─────────────────────────────────────────────── -->
-  <section class="py-32 px-6">
+  <section class="py-32 px-6 overflow-hidden">
     <div class="max-w-6xl mx-auto grid md:grid-cols-[1fr_1.15fr] gap-16 items-center">
 
-      <div>
-        <p class="text-xs uppercase tracking-[0.38em] text-[#b89fb7] font-medium mb-7">Formación Profesional</p>
-        <h2 class="text-[clamp(2rem,4.5vw,3.5rem)] font-bold leading-[1.05] tracking-tight mb-8">
+      <div data-animate="left">
+        <p class="text-xs uppercase tracking-[0.38em] font-medium mb-7" style="color: #b89fb7;">Formación Profesional</p>
+        <h2 class="text-[clamp(2rem,4.5vw,3.5rem)] font-bold leading-[1.05] tracking-tight mb-8" style="color: #2d1229;">
           Aprende con<br/>las mejores<br/>del sector
         </h2>
-        <p class="text-gray-500 leading-relaxed mb-8 max-w-sm">
-          Más de 20 años formando lash artists en Madrid. Grupos de máximo 4 alumnas, práctica real desde el primer día y certificado profesional incluido.
+        <p class="leading-relaxed mb-8 max-w-sm" style="color: #9c7a9a;">
+          Más de 20 años formando lash artists en Madrid. Práctica real desde el primer día y certificado profesional incluido.
         </p>
 
         <ul class="space-y-5 mb-10">
@@ -97,10 +175,15 @@ import Layout from "../layouts/Layout.astro";
             "Certificado profesional incluido",
             "Modelos reales desde el primer día",
             "Modalidad presencial y online",
-            "Grupos reducidos, máximo 4 alumnas",
-          ].map((item) => (
-            <li class="flex items-center gap-4 text-sm text-gray-700">
-              <span class="w-6 h-px bg-black flex-shrink-0 block"></span>
+            "Grupos reducidos y personalizados",
+          ].map((item, i) => (
+            <li
+              data-animate
+              data-delay={String(100 + i * 100)}
+              class="flex items-center gap-4 text-sm"
+              style="color: #5c2d5a;"
+            >
+              <span class="w-6 h-px flex-shrink-0 block" style="background: #c9a0c7;"></span>
               {item}
             </li>
           ))}
@@ -108,17 +191,18 @@ import Layout from "../layouts/Layout.astro";
 
         <a
           href="/formacion"
-          class="bg-black text-white px-9 py-3.5 rounded-full text-sm font-semibold tracking-wide hover:bg-gray-800 transition inline-block"
+          class="text-white px-9 py-3.5 rounded-full text-sm font-semibold tracking-wide hover:scale-105 transition-all duration-200 inline-block"
+          style="background: linear-gradient(135deg, #c9a0c7 0%, #9c5a96 100%); box-shadow: 0 4px 20px rgba(156,90,150,0.22);"
         >
           Ver cursos disponibles
         </a>
       </div>
 
-      <div class="overflow-hidden rounded-2xl">
+      <div data-animate="right" class="overflow-hidden rounded-2xl">
         <img
           src="/services/formacion.png"
           alt="Formación profesional de cejas y pestañas Madrid"
-          class="w-full h-[540px] object-cover hover:scale-[1.03] transition duration-700"
+          class="w-full h-[540px] object-cover hover:scale-[1.04] transition duration-700"
         />
       </div>
 
@@ -126,44 +210,48 @@ import Layout from "../layouts/Layout.astro";
   </section>
 
 
-  <!-- ─── SERVICIOS (sección oscura) ───────────────────────────── -->
-  <section class="bg-[#0f0f0f] py-32 px-6">
+  <!-- ─── SERVICIOS ───────────────────────────────────────────── -->
+  <section style="background: #f4eef4;" class="py-32 px-6 overflow-hidden">
     <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
 
-      <div class="overflow-hidden rounded-2xl order-2 md:order-1">
+      <div data-animate="left" class="overflow-hidden rounded-2xl order-2 md:order-1">
         <img
           src="/nosotros/centro.png"
           alt="Estudio Lashes Esmera Madrid"
-          class="w-full h-[520px] object-cover hover:scale-[1.03] transition duration-700"
+          class="w-full h-[520px] object-cover hover:scale-[1.04] transition duration-700"
         />
       </div>
 
-      <div class="order-1 md:order-2">
-        <p class="text-xs uppercase tracking-[0.38em] text-[#f1cdf0] font-medium mb-7">Estudio en Madrid</p>
-        <h2 class="text-[clamp(2rem,4.5vw,3.5rem)] font-bold text-white leading-[1.05] tracking-tight mb-8">
+      <div data-animate="right" class="order-1 md:order-2">
+        <p class="text-xs uppercase tracking-[0.38em] font-medium mb-7" style="color: #b89fb7;">Estudio en Madrid</p>
+        <h2 class="text-[clamp(2rem,4.5vw,3.5rem)] font-bold text-[#0a0a0a] leading-[1.05] tracking-tight mb-8">
           Servicios<br/>profesionales
         </h2>
-        <p class="text-white/45 text-sm leading-relaxed mb-10 max-w-sm">
+        <p class="text-[#777] text-sm leading-relaxed mb-10 max-w-sm">
           Extensiones de pestañas, lifting, laminado y diseño de cejas. Técnicas actualizadas, productos de alta gama y resultados que hablan por sí solos.
         </p>
 
         <div class="mb-10">
           {[
-            { name: "Lifting de pestañas",        price: "desde 50€" },
-            { name: "Extensiones volumen ruso",   price: "desde 95€" },
-            { name: "Laminado de cejas",           price: "desde 45€" },
-            { name: "Diseño de cejas",             price: "desde 20€" },
-          ].map((s) => (
-            <div class="flex justify-between items-center py-4 border-b border-white/8">
-              <span class="text-white/75 text-sm font-medium">{s.name}</span>
-              <span class="text-white/35 text-sm tabular-nums">{s.price}</span>
+            { name: "Lifting de pestañas",       price: "desde 50€" },
+            { name: "Extensiones volumen ruso",  price: "desde 95€" },
+            { name: "Laminado de cejas",          price: "desde 45€" },
+            { name: "Diseño de cejas",            price: "desde 20€" },
+          ].map((s, i) => (
+            <div
+              data-animate
+              data-delay={String(i * 100)}
+              class="flex justify-between items-center py-4 border-b border-black/6"
+            >
+              <span class="text-[#333] text-sm font-medium">{s.name}</span>
+              <span class="text-[#aaa] text-sm tabular-nums">{s.price}</span>
             </div>
           ))}
         </div>
 
         <a
           href="/servicios"
-          class="border border-white/25 text-white px-9 py-3.5 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-black transition inline-block"
+          class="bg-[#0a0a0a] text-white px-9 py-3.5 rounded-full text-sm font-semibold tracking-wide hover:bg-[#222] hover:scale-105 transition-all duration-200 inline-block"
         >
           Ver todos los precios
         </a>
@@ -174,38 +262,41 @@ import Layout from "../layouts/Layout.astro";
 
 
   <!-- ─── TIENDA ────────────────────────────────────────────────── -->
-  <section class="py-32 px-6">
+  <section class="py-32 px-6" style="background: #fdf6fd;">
     <div class="max-w-5xl mx-auto text-center">
 
-      <p class="text-xs uppercase tracking-[0.38em] text-gray-400 font-medium mb-6">Tienda Online</p>
-      <h2 class="text-[clamp(2rem,4.5vw,3.2rem)] font-bold tracking-tight leading-tight mb-6">
-        Material profesional<br/>para lash artists
-      </h2>
-      <p class="text-gray-500 max-w-md mx-auto leading-relaxed mb-16">
-        Pinzas, adhesivos, kits y todo lo que necesitas. Testado y seleccionado por nuestras expertas.
-      </p>
+      <div data-animate>
+        <p class="text-xs uppercase tracking-[0.38em] font-medium mb-6" style="color: #c9a0c7;">Tienda Online</p>
+        <h2 class="text-[clamp(2rem,4.5vw,3.2rem)] font-bold tracking-tight leading-tight mb-6" style="color: #2d1229;">
+          Material profesional<br/>para lash artists
+        </h2>
+        <p class="max-w-md mx-auto leading-relaxed mb-16" style="color: #9c7a9a;">
+          Pinzas, adhesivos, kits y todo lo que necesitas. Testado y seleccionado por nuestras expertas.
+        </p>
+      </div>
 
-      <div class="grid md:grid-cols-3 gap-6 mb-16 pt-10 border-t border-gray-100">
+      <div class="grid md:grid-cols-3 gap-6 mb-16 pt-10" style="border-top: 1px solid rgba(201,160,199,0.2);">
         {[
-          { title: "Calidad garantizada",  desc: "Testado por profesionales del sector" },
-          { title: "Envíos en 24–48 h",    desc: "Entrega rápida en toda España" },
+          { title: "Calidad garantizada",   desc: "Testado por profesionales del sector" },
+          { title: "Envíos en 24–48 h",     desc: "Entrega rápida en toda España" },
           { title: "Asesoramiento experto", desc: "Te ayudamos a elegir lo mejor" },
-        ].map((f) => (
-          <div class="text-center">
-            <p class="font-semibold mb-1.5 text-sm">{f.title}</p>
-            <p class="text-gray-400 text-sm">{f.desc}</p>
+        ].map((f, i) => (
+          <div data-animate data-delay={String(i * 150)} class="text-center">
+            <p class="font-semibold mb-1.5 text-sm" style="color: #5c2d5a;">{f.title}</p>
+            <p class="text-sm" style="color: #b89fb7;">{f.desc}</p>
           </div>
         ))}
       </div>
 
-      <a
-        href="https://tienda.lashesesmera.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="bg-black text-white px-12 py-4 rounded-full text-sm font-semibold tracking-wide hover:bg-gray-800 transition inline-block"
-      >
-        Visitar la tienda →
-      </a>
+      <div data-animate data-delay="200">
+        <a
+          href="/tienda"
+          class="text-white px-12 py-4 rounded-full text-sm font-semibold tracking-wide hover:scale-105 transition-all duration-200 inline-block"
+          style="background: linear-gradient(135deg, #c9a0c7 0%, #9c5a96 100%); box-shadow: 0 4px 20px rgba(156,90,150,0.22);"
+        >
+          Visitar la tienda →
+        </a>
+      </div>
 
     </div>
   </section>
@@ -213,29 +304,83 @@ import Layout from "../layouts/Layout.astro";
 
   <!-- ─── CTA FINAL ─────────────────────────────────────────────── -->
   <section class="bg-[#f1cdf0] py-28 px-6">
-    <div class="max-w-xl mx-auto text-center">
-      <p class="text-xs uppercase tracking-[0.38em] text-black/40 font-medium mb-7">Tu nueva carrera te espera</p>
-      <h2 class="text-[clamp(2.2rem,5vw,3.5rem)] font-bold mb-7 leading-[1.05] tracking-tight">
+    <div data-animate class="max-w-xl mx-auto text-center">
+      <p class="text-xs uppercase tracking-[0.38em] font-medium mb-7" style="color: #9c5a96;">Tu nueva carrera te espera</p>
+      <h2 class="text-[clamp(2.2rem,5vw,3.5rem)] font-bold mb-7 leading-[1.05] tracking-tight" style="color: #2d1229;">
         Empieza hoy.
       </h2>
-      <p class="text-gray-700 mb-10 leading-relaxed text-base">
+      <p class="mb-10 leading-relaxed text-base" style="color: #5c2d5a;">
         Formación, productos y servicios profesionales en un solo lugar.
       </p>
       <div class="flex flex-col sm:flex-row justify-center gap-4">
         <a
           href="/formacion"
-          class="bg-black text-white px-10 py-3.5 rounded-full text-sm font-semibold tracking-wide hover:bg-gray-800 transition"
+          class="text-white px-10 py-3.5 rounded-full text-sm font-semibold tracking-wide hover:scale-105 transition-all duration-200"
+          style="background: #5c2d5a; box-shadow: 0 4px 16px rgba(92,45,90,0.3);"
         >
           Quiero formarme
         </a>
         <a
           href="https://wa.me/34600000000"
-          class="border border-black text-black px-10 py-3.5 rounded-full text-sm font-medium tracking-wide hover:bg-black hover:text-white transition"
+          class="px-10 py-3.5 rounded-full text-sm font-medium tracking-wide hover:scale-105 transition-all duration-200"
+          style="border: 1.5px solid #9c5a96; color: #5c2d5a;"
+          onmouseover="this.style.background='#9c5a96'; this.style.color='#fff';"
+          onmouseout="this.style.background=''; this.style.color='#5c2d5a';"
         >
           Reservar cita
         </a>
       </div>
     </div>
   </section>
+
+
+<script is:inline>
+(function () {
+  function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  function runCount(el) {
+    if (el.dataset.counted) return;
+    el.dataset.counted = 'true';
+
+    var target   = parseInt(el.dataset.count, 10);
+    var prefix   = el.dataset.prefix || '';
+    var duration = 1500;
+    var startTs  = null;
+
+    function step(ts) {
+      if (!startTs) startTs = ts;
+      var progress = Math.min((ts - startTs) / duration, 1);
+      el.textContent = prefix + Math.round(easeOutCubic(progress) * target);
+      if (progress < 1) requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  /* Hero mini-stats: arrancan después de que termine la animación de entrada (~950ms) */
+  window.addEventListener('DOMContentLoaded', function () {
+    var heroNums = document.querySelectorAll('.hero-stats .count-num');
+    heroNums.forEach(function (el, i) {
+      setTimeout(function () { runCount(el); }, 950 + i * 120);
+    });
+  });
+
+  /* Stats section: arrancan al entrar en el viewport */
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.count-num').forEach(function (el, i) {
+          setTimeout(function () { runCount(el); }, i * 150);
+        });
+      }
+    });
+  }, { threshold: 0.35 });
+
+  var statsSection = document.getElementById('stats-section');
+  if (statsSection) observer.observe(statsSection);
+})();
+</script>
 
 </Layout>

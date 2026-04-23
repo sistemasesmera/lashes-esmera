@@ -7,140 +7,294 @@ import Layout from "../layouts/Layout.astro";
   description="Contacta con Lashes Esmera en Madrid. Reserva tu cita o solicita información sobre nuestros servicios, formación y productos."
   canonical="https://lashesesmera.com/contacto"
 >
-  <!-- HERO -->
-  <section
-    class="bg-gradient-to-b from-[#f1cdf0] to-white pt-32 pb-4 px-6 text-center"
-  >
-    <h1 class="text-4xl md:text-5xl font-semibold text-gray-900 mb-4">
-      ¿Cómo podemos ayudarte?
-    </h1>
 
-    <p class="text-lg text-gray-600 max-w-xl mx-auto">
-      Elige una opción o escríbenos directamente. Te asesoramos de forma
-      personalizada.
-    </p>
-  </section>
+  <!-- ─── HERO ─────────────────────────────────────────────────── -->
+  <section class="relative overflow-hidden py-24 px-6 text-center" style="background: #fff;">
+    <!-- Blob decorativo -->
+    <div class="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-full" style="background: radial-gradient(ellipse 65% 80% at 50% 0%, rgba(241,205,240,0.28) 0%, transparent 70%);"></div>
 
-  <!-- OPCIONES -->
-  <section class="py-16 px-6 bg-white">
-    <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
-      <!-- SERVICIOS -->
-      <a
-        href="https://wa.me/34600000000?text=Hola,%20quiero%20reservar%20una%20cita"
-        class="p-6 rounded-2xl border border-gray-200 hover:shadow-xl transition text-center group"
-      >
-        <h3 class="text-lg font-semibold mb-2">Reservar cita</h3>
-        <p class="text-sm text-gray-500 mb-4">Servicios de cejas y pestañas</p>
-        <span class="text-green-600 font-medium group-hover:underline">
-          Reservar →
-        </span>
-      </a>
-
-      <!-- FORMACIÓN -->
-      <a
-        href="https://wa.me/34600000000?text=Hola,%20quiero%20información%20sobre%20formación"
-        class="p-6 rounded-2xl border border-gray-200 hover:shadow-xl transition text-center group"
-      >
-        <h3 class="text-lg font-semibold mb-2">Formación</h3>
-        <p class="text-sm text-gray-500 mb-4">Cursos profesionales</p>
-        <span class="text-green-600 font-medium group-hover:underline">
-          Solicitar info →
-        </span>
-      </a>
-
-      <!-- TIENDA -->
-      <a
-        href="https://wa.me/34600000000?text=Hola,%20quiero%20información%20sobre%20productos"
-        class="p-6 rounded-2xl border border-gray-200 hover:shadow-xl transition text-center group"
-      >
-        <h3 class="text-lg font-semibold mb-2">Tienda</h3>
-        <p class="text-sm text-gray-500 mb-4">Productos profesionales</p>
-        <span class="text-green-600 font-medium group-hover:underline">
-          Consultar →
-        </span>
-      </a>
+    <div class="relative z-10 max-w-2xl mx-auto">
+      <div class="hero-eyebrow flex items-center justify-center gap-3 mb-8">
+        <span class="block w-7 h-px" style="background: #c9a0c7;"></span>
+        <p class="text-[10.5px] uppercase tracking-[0.45em] font-medium" style="color: #c9a0c7;">Estudio en Madrid</p>
+        <span class="block w-7 h-px" style="background: #c9a0c7;"></span>
+      </div>
+      <h1 class="hero-h1 text-[clamp(2.4rem,6vw,4.2rem)] font-bold leading-[1.05] tracking-tight mb-6" style="color: #2d1229;">
+        ¿Cómo podemos<br/>
+        <em class="not-italic font-light" style="color: #c9a0c7;">ayudarte?</em>
+      </h1>
+      <p class="hero-p text-base md:text-lg leading-relaxed max-w-md mx-auto" style="color: #9c7a9a;">
+        Elige la opción que mejor se adapte a ti. Te asesoramos de forma personalizada.
+      </p>
     </div>
   </section>
 
-  <!-- CONTACTO -->
-  <section class="py-20 px-6 bg-gray-50">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-      <!-- IMAGEN -->
-      <div class="relative group">
+
+  <!-- ─── OPCIONES RÁPIDAS ──────────────────────────────────────── -->
+  <section class="pb-10 px-6" style="background: #fff;">
+    <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-5">
+
+      {[
+        {
+          icon: "M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5",
+          title: "Reservar cita",
+          desc: "Servicios de cejas y pestañas",
+          href: "https://wa.me/34600000000?text=Hola,%20quiero%20reservar%20una%20cita",
+          cta: "Reservar ahora",
+          external: true,
+        },
+        {
+          icon: "M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5",
+          title: "Formación",
+          desc: "Cursos profesionales en Madrid",
+          href: "https://wa.me/34600000000?text=Hola,%20quiero%20información%20sobre%20formación",
+          cta: "Solicitar info",
+          external: true,
+        },
+        {
+          icon: "M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z",
+          title: "Tienda",
+          desc: "Próximamente disponible",
+          href: "/tienda",
+          cta: "Ver estado",
+          external: false,
+        },
+      ].map((opt, i) => (
+        <a
+          href={opt.href}
+          target={opt.external ? "_blank" : undefined}
+          rel={opt.external ? "noopener noreferrer" : undefined}
+          data-animate
+          data-delay={String(i * 120)}
+          class="group flex flex-col items-center text-center p-7 rounded-2xl transition-all duration-300 hover:-translate-y-1"
+          style="border: 1px solid rgba(201,160,199,0.2); background: #fff; box-shadow: 0 2px 16px rgba(156,90,150,0.05);"
+          onmouseover="this.style.boxShadow='0 10px 36px rgba(156,90,150,0.13)'; this.style.borderColor='rgba(201,160,199,0.45)';"
+          onmouseout="this.style.boxShadow='0 2px 16px rgba(156,90,150,0.05)'; this.style.borderColor='rgba(201,160,199,0.2)';"
+        >
+          <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110" style="background: #fdf6fd;">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="color: #9c5a96;">
+              <path stroke-linecap="round" stroke-linejoin="round" d={opt.icon}/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-base mb-1.5" style="color: #2d1229;">{opt.title}</h3>
+          <p class="text-sm mb-5" style="color: #b89fb7;">{opt.desc}</p>
+          <span class="text-xs font-semibold uppercase tracking-widest flex items-center gap-1.5 transition-all duration-200 group-hover:gap-2.5" style="color: #9c5a96;">
+            {opt.cta}
+            <span>→</span>
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+
+  <!-- ─── FORMULARIO + INFO ─────────────────────────────────────── -->
+  <section class="py-20 px-6" style="background: #fdf6fd;">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-[1fr_1.1fr] gap-8 items-stretch">
+
+      <!-- Panel izquierdo: info de contacto oscuro -->
+      <div data-animate="left" class="relative overflow-hidden rounded-2xl flex flex-col" style="background: #2d1229; min-height: 540px;">
+
+        <!-- Imagen de fondo con overlay -->
         <img
           src="/contacto/image.png"
-          alt="Contacto Lashes Esmera"
-          class="rounded-2xl object-cover w-full h-[450px] shadow-lg transition duration-500 group-hover:scale-[1.02]"
+          alt="Lashes Esmera Madrid"
+          class="absolute inset-0 w-full h-full object-cover opacity-20"
         />
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"
-        >
-        </div>
+        <div class="absolute inset-0" style="background: linear-gradient(160deg, rgba(45,18,41,0.65) 0%, rgba(45,18,41,0.92) 100%);"></div>
 
-        <div class="absolute bottom-6 left-6 text-white">
-          <p class="text-sm opacity-90">Atención personalizada</p>
-          <p class="text-lg font-semibold">Resultados profesionales</p>
+        <!-- Glow -->
+        <div class="pointer-events-none absolute bottom-0 right-0 w-64 h-64" style="background: radial-gradient(circle, rgba(156,90,150,0.2) 0%, transparent 70%);"></div>
+
+        <div class="relative z-10 flex flex-col flex-1 p-10">
+          <div>
+            <p class="text-xs uppercase tracking-[0.38em] font-medium mb-4" style="color: #c9a0c7;">Información de contacto</p>
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-2 leading-tight">Estamos aquí<br/>para ti.</h2>
+            <p class="text-sm leading-relaxed mb-10" style="color: rgba(241,205,240,0.5);">Respuesta rápida · Atención personalizada</p>
+          </div>
+
+          <div class="space-y-7 flex-1">
+            {[
+              {
+                icon: "M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z",
+                label: "Teléfono",
+                value: "+34 600 00 00 00",
+                href: "tel:+34600000000",
+              },
+              {
+                icon: "M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75",
+                label: "Email",
+                value: "info@lashesesmera.com",
+                href: "mailto:info@lashesesmera.com",
+              },
+              {
+                icon: "M15 10.5a3 3 0 11-6 0 3 3 0 016 0z M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z",
+                label: "Estudio",
+                value: "Madrid, España",
+                href: null,
+              },
+              {
+                icon: "M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z",
+                label: "Horario",
+                value: "Lun – Vie · 10:00 – 19:00",
+                href: null,
+              },
+            ].map(item => (
+              <div class="flex items-start gap-4">
+                <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(241,205,240,0.1);">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="color: #f1cdf0;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d={item.icon}/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-[10px] uppercase tracking-widest mb-0.5" style="color: rgba(241,205,240,0.35);">{item.label}</p>
+                  {item.href
+                    ? <a href={item.href} class="text-sm font-medium text-white hover:text-[#f1cdf0] transition-colors duration-200">{item.value}</a>
+                    : <p class="text-sm font-medium text-white">{item.value}</p>
+                  }
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- WhatsApp directo -->
+          <a
+            href="https://wa.me/34600000000"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-10 flex items-center justify-center gap-2.5 py-3.5 rounded-xl text-sm font-semibold transition-all duration-200 hover:scale-[1.02]"
+            style="background: rgba(241,205,240,0.12); border: 1px solid rgba(241,205,240,0.2); color: #f1cdf0;"
+            onmouseover="this.style.background='rgba(241,205,240,0.18)';" onmouseout="this.style.background='rgba(241,205,240,0.12)';"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Escribir por WhatsApp
+          </a>
         </div>
       </div>
 
-      <!-- FORMULARIO -->
-      <div
-        class="bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-gray-100"
-      >
-        <h2 class="text-2xl font-semibold mb-2 text-gray-900">
-          ¿Tienes dudas? Te ayudamos
-        </h2>
+      <!-- Panel derecho: formulario -->
+      <div data-animate="right" class="bg-white rounded-2xl p-8 md:p-10 flex flex-col" style="border: 1px solid rgba(201,160,199,0.2); box-shadow: 0 4px 24px rgba(156,90,150,0.07);">
 
-        <p class="text-sm text-gray-500 mb-6">
-          También puedes escribirnos directamente aquí
-        </p>
+        <p class="text-xs uppercase tracking-[0.38em] font-medium mb-3" style="color: #c9a0c7;">Formulario de contacto</p>
+        <h2 class="text-2xl font-bold mb-2 leading-tight" style="color: #2d1229;">¿Tienes dudas?<br/>Te ayudamos.</h2>
+        <p class="text-sm mb-8" style="color: #b89fb7;">Completa el formulario y nos ponemos en contacto contigo por WhatsApp.</p>
 
-        <form id="contact-form" class="space-y-5">
-          <input
-            type="text"
-            name="nombre"
-            placeholder="Nombre"
-            required
-            class="w-full px-5 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-gray-300 transition"
-          />
+        <form id="contact-form" class="flex flex-col gap-4 flex-1">
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Correo electrónico"
-            required
-            class="w-full px-5 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-gray-300 transition"
-          />
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="flex flex-col gap-1.5">
+              <label class="text-xs font-medium uppercase tracking-widest" style="color: #9c7a9a;">Nombre</label>
+              <input
+                type="text"
+                name="nombre"
+                placeholder="Tu nombre"
+                required
+                class="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200 outline-none"
+                style="border: 1.5px solid rgba(201,160,199,0.3); color: #2d1229; background: #fff;"
+                onfocus="this.style.borderColor='#c9a0c7'; this.style.boxShadow='0 0 0 3px rgba(201,160,199,0.15)';"
+                onblur="this.style.borderColor='rgba(201,160,199,0.3)'; this.style.boxShadow='none';"
+              />
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <label class="text-xs font-medium uppercase tracking-widest" style="color: #9c7a9a;">Teléfono</label>
+              <input
+                type="tel"
+                name="telefono"
+                placeholder="+34 600 000 000"
+                required
+                class="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200 outline-none"
+                style="border: 1.5px solid rgba(201,160,199,0.3); color: #2d1229; background: #fff;"
+                onfocus="this.style.borderColor='#c9a0c7'; this.style.boxShadow='0 0 0 3px rgba(201,160,199,0.15)';"
+                onblur="this.style.borderColor='rgba(201,160,199,0.3)'; this.style.boxShadow='none';"
+              />
+            </div>
+          </div>
 
-          <input
-            type="tel"
-            name="telefono"
-            placeholder="Teléfono"
-            required
-            class="w-full px-5 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-gray-300 transition"
-          />
+          <div class="flex flex-col gap-1.5">
+            <label class="text-xs font-medium uppercase tracking-widest" style="color: #9c7a9a;">Email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="tu@email.com"
+              required
+              class="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200 outline-none"
+              style="border: 1.5px solid rgba(201,160,199,0.3); color: #2d1229; background: #fff;"
+              onfocus="this.style.borderColor='#c9a0c7'; this.style.boxShadow='0 0 0 3px rgba(201,160,199,0.15)';"
+              onblur="this.style.borderColor='rgba(201,160,199,0.3)'; this.style.boxShadow='none';"
+            />
+          </div>
 
-          <textarea
-            name="mensaje"
-            placeholder="Cuéntanos en qué podemos ayudarte..."
-            rows="4"
-            required
-            class="w-full px-5 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-gray-300 transition resize-none"
-          ></textarea>
+          <div class="flex flex-col gap-1.5">
+            <label class="text-xs font-medium uppercase tracking-widest" style="color: #9c7a9a;">¿En qué te podemos ayudar?</label>
+            <div class="grid grid-cols-3 gap-2">
+              {["Servicios", "Formación", "Productos"].map(opt => (
+                <label class="tema-option cursor-pointer">
+                  <input type="radio" name="tema" value={opt} class="sr-only" />
+                  <span
+                    class="flex items-center justify-center text-xs font-medium py-2.5 rounded-xl transition-all duration-200 select-none"
+                    style="border: 1.5px solid rgba(201,160,199,0.3); color: #9c7a9a; background: #fff;"
+                  >{opt}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1.5 flex-1">
+            <label class="text-xs font-medium uppercase tracking-widest" style="color: #9c7a9a;">Mensaje</label>
+            <textarea
+              name="mensaje"
+              placeholder="Cuéntanos en qué podemos ayudarte..."
+              rows="4"
+              required
+              class="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200 outline-none resize-none flex-1"
+              style="border: 1.5px solid rgba(201,160,199,0.3); color: #2d1229; background: #fff;"
+              onfocus="this.style.borderColor='#c9a0c7'; this.style.boxShadow='0 0 0 3px rgba(201,160,199,0.15)';"
+              onblur="this.style.borderColor='rgba(201,160,199,0.3)'; this.style.boxShadow='none';"
+            ></textarea>
+          </div>
 
           <button
             type="submit"
-            class="w-full bg-black hover:bg-gray-800 text-white font-semibold py-3 rounded-lg shadow-md hover:shadow-lg transition transform hover:scale-[1.02]"
+            id="submit-btn"
+            class="w-full flex items-center justify-center gap-2.5 text-white py-4 rounded-xl text-sm font-semibold tracking-wide transition-all duration-200 hover:scale-[1.02] mt-2"
+            style="background: linear-gradient(135deg, #c9a0c7 0%, #9c5a96 100%); box-shadow: 0 4px 20px rgba(156,90,150,0.28);"
           >
-            Enviar información
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Enviar por WhatsApp
           </button>
+
         </form>
       </div>
     </div>
   </section>
 
-
 </Layout>
+
+
+<style>
+  /* Radio pills de tema */
+  .tema-option input:checked + span {
+    background: #f1cdf0 !important;
+    border-color: #c9a0c7 !important;
+    color: #5c2d5a !important;
+    font-weight: 600;
+  }
+  .tema-option:hover span {
+    border-color: #c9a0c7;
+    background: #fdf6fd;
+  }
+
+  /* Placeholder color */
+  input::placeholder, textarea::placeholder {
+    color: #c9a0c7;
+    opacity: 0.7;
+  }
+</style>
+
 
 <script is:inline>
   const form = document.getElementById("contact-form");
@@ -149,16 +303,18 @@ import Layout from "../layouts/Layout.astro";
     e.preventDefault();
     const data = new FormData(form);
 
-    const nombre = data.get("nombre") || "";
-    const email = data.get("email") || "";
+    const nombre   = data.get("nombre")   || "";
+    const email    = data.get("email")    || "";
     const telefono = data.get("telefono") || "";
-    const mensaje = data.get("mensaje") || "";
+    const tema     = data.get("tema")     || "General";
+    const mensaje  = data.get("mensaje")  || "";
 
-    const texto = `Hola, contacto desde la web:
+    const texto = `Hola, contacto desde la web de Lashes Esmera:
 
 Nombre: ${nombre}
 Email: ${email}
 Teléfono: ${telefono}
+Tema: ${tema}
 Mensaje: ${mensaje}`;
 
     const url = `https://wa.me/34600000000?text=${encodeURIComponent(texto)}`;

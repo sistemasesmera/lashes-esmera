@@ -60,24 +60,6 @@ import Layout from "../layouts/Layout.astro";
             </a>
           </div>
 
-          <!-- Stats mini-row -->
-          <div class="hero-stats mt-12 pt-8 flex items-center gap-8" style="border-top: 1px solid rgba(201,160,199,0.2);">
-            {[
-              { num: 20,  prefix: "+", label: "años de exp." },
-              { num: 500, prefix: "+", label: "alumnas" },
-              { num: 5,   prefix: "",  label: "técnicas" },
-            ].map(s => (
-              <div class="flex flex-col">
-                <span
-                  class="count-num text-2xl font-bold leading-none"
-                  style="color: #2d1229;"
-                  data-count={String(s.num)}
-                  data-prefix={s.prefix}
-                >{s.prefix}0</span>
-                <span class="text-[10px] uppercase tracking-widest mt-1.5" style="color: #c9a0c7;">{s.label}</span>
-              </div>
-            ))}
-          </div>
         </div>
 
         <!-- COLUMNA DERECHA: Imagen contenida -->
@@ -255,6 +237,89 @@ import Layout from "../layouts/Layout.astro";
         >
           Ver todos los precios
         </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ─── TESTIMONIOS ─────────────────────────────────────────── -->
+  <section class="py-32 px-6 bg-white overflow-hidden">
+    <div class="max-w-6xl mx-auto">
+
+      <div data-animate class="text-center mb-16">
+        <p class="text-xs uppercase tracking-[0.38em] font-medium mb-4" style="color: #c9a0c7;">Reseñas</p>
+        <h2 class="text-[clamp(2rem,4.5vw,3.2rem)] font-bold tracking-tight leading-tight" style="color: #2d1229;">
+          Lo que dicen<br/>nuestras clientas
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {[
+          {
+            name: "María G.",
+            service: "Extensiones volumen ruso",
+            text: "Llevaba años queriendo hacerme extensiones y aquí encontré exactamente lo que buscaba. El resultado duró muchísimo más de lo esperado. Volveré siempre.",
+            color: "#fdf6fd",
+          },
+          {
+            name: "Laura M.",
+            service: "Curso lifting de pestañas",
+            text: "El curso superó todas mis expectativas. Práctica real desde el primer día y Bertha es una profesional increíble. Ahora trabajo en mi propio centro.",
+            color: "#f4eef4",
+            featured: true,
+          },
+          {
+            name: "Ana L.",
+            service: "Laminado de cejas",
+            text: "Por fin un sitio donde entienden que las cejas enmarcan la cara. El resultado fue natural y perfecto para mi tipo de cara. Totalmente recomendado.",
+            color: "#fdf6fd",
+          },
+          {
+            name: "Carmen R.",
+            service: "Lifting coreano",
+            text: "Vine recomendada por una amiga y no me puedo creer el cambio. Muy cómodo y el resultado es espectacular. Todas mis amigas ya me han preguntado dónde fui.",
+            color: "#f4eef4",
+          },
+        ].map((t, i) => (
+          <div
+            data-animate
+            data-delay={String(i * 100)}
+            class="flex flex-col p-6 rounded-2xl"
+            style={`background: ${t.color}; border: ${t.featured ? '1.5px solid #c9a0c7' : '1px solid rgba(201,160,199,0.18)'};`}
+          >
+            <!-- Estrellas -->
+            <div class="flex gap-0.5 mb-4">
+              {[1,2,3,4,5].map(() => (
+                <svg class="w-3.5 h-3.5" fill="#c9a0c7" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+              ))}
+            </div>
+
+            <!-- Texto -->
+            <p class="text-sm leading-relaxed flex-1 italic mb-5" style="color: #6b5a6a;">"{t.text}"</p>
+
+            <!-- Autor -->
+            <div class="flex items-center gap-3 pt-4" style="border-top: 1px solid rgba(201,160,199,0.2);">
+              <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0" style="background: #f1cdf0; color: #5c2d5a;">
+                {t.name.split(' ').map((n: string) => n[0]).join('')}
+              </div>
+              <div>
+                <p class="text-xs font-semibold" style="color: #2d1229;">{t.name}</p>
+                <p class="text-[10px]" style="color: #c9a0c7;">{t.service}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Google Reviews CTA -->
+      <div data-animate data-delay="200" class="text-center mt-12">
+        <p class="text-sm" style="color: #b89fb7;">
+          ¿Has sido clienta? Déjanos tu reseña en
+          <a href="https://g.page/r/lashesesmera/review" target="_blank" rel="noopener noreferrer" class="font-medium underline underline-offset-2 transition-colors hover:text-[#9c5a96]" style="color: #9c5a96;">Google</a>
+        </p>
       </div>
 
     </div>

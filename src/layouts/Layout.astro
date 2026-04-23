@@ -1,7 +1,6 @@
 ---
 import Footer from "../components/Footer.astro";
 import Navbar from "../components/Navbar.astro";
-import TopBar from "../components/TopBar.astro";
 import "../styles/global.css";
 
 const {
@@ -80,7 +79,6 @@ const hasHeader = showNavbar || miniHeader;
     {
       showNavbar ? (
         <header class="w-full fixed top-0 left-0 z-50">
-          <TopBar />
           <Navbar />
         </header>
       ) : (
@@ -101,33 +99,58 @@ const hasHeader = showNavbar || miniHeader;
     }
 
     <!-- MAIN -->
-    <main class={`flex-1 w-full ${hasHeader ? "pt-20 md:pt-[116px]" : ""}`}>
+    <main class={`flex-1 w-full ${hasHeader ? "pt-[68px]" : ""}`}>
       <div class="w-full mx-auto">
         <slot />
       </div>
     </main>
 
     <!-- FOOTER -->
-    {
-      showFooter && (
-        <footer class="w-full mt-auto">
-          <Footer />
-        </footer>
-      )
-    }
+    { showFooter && <Footer /> }
 
-    <!-- FLOATING WHATSAPP -->
-    <a
-      href="https://wa.me/34600000000"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Contactar por WhatsApp"
-      class="wa-pulse-btn fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] hover:bg-[#1ebe5c] rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M20.52 3.48A11.82 11.82 0 0012.01 0C5.38 0 .01 5.37.01 12c0 2.11.55 4.17 1.6 5.98L0 24l6.17-1.62A11.94 11.94 0 0012.01 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.49-8.52zM12 21.82c-1.8 0-3.56-.48-5.1-1.39l-.36-.21-3.66.96.98-3.56-.23-.37A9.79 9.79 0 012.2 12c0-5.41 4.39-9.8 9.8-9.8 2.62 0 5.08 1.02 6.93 2.87A9.77 9.77 0 0121.8 12c0 5.41-4.39 9.82-9.8 9.82zm5.41-7.37c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.28-.47-2.43-1.5-.9-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.03-1.05 2.52s1.08 2.93 1.23 3.13c.15.2 2.13 3.26 5.17 4.57.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/>
-      </svg>
-    </a>
+    <!-- GRUPO FLOTANTE: flechas + WhatsApp -->
+    <div id="float-group" class="fixed right-5 z-50 flex flex-col items-center gap-2.5" style="bottom: 24px; transition: bottom 0.25s ease;">
+
+      <!-- Flecha arriba -->
+      <button
+        id="btn-up"
+        aria-label="Volver arriba"
+        onclick="window.scrollTo({top:0,behavior:'smooth'})"
+        class="float-arrow w-10 h-10 rounded-full flex items-center justify-center transition-all duration-250 hover:scale-110"
+        style="background:#fff; border:1.5px solid rgba(201,160,199,0.35); box-shadow:0 2px 12px rgba(156,90,150,0.12); opacity:0; transform:translateY(-4px); pointer-events:none;"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" style="color:#9c5a96;">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"/>
+        </svg>
+      </button>
+
+      <!-- Flecha abajo -->
+      <button
+        id="btn-down"
+        aria-label="Ir abajo"
+        onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})"
+        class="float-arrow w-10 h-10 rounded-full flex items-center justify-center transition-all duration-250 hover:scale-110"
+        style="background:#fff; border:1.5px solid rgba(201,160,199,0.35); box-shadow:0 2px 12px rgba(156,90,150,0.12);"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" style="color:#9c5a96;">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+        </svg>
+      </button>
+
+      <!-- WhatsApp -->
+      <a
+        href="https://wa.me/34600000000"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Contactar por WhatsApp"
+        class="wa-pulse-btn w-13 h-13 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+        style="width:52px;height:52px;background:#25D366;box-shadow:0 4px 18px rgba(37,211,102,0.35);"
+      >
+        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20.52 3.48A11.82 11.82 0 0012.01 0C5.38 0 .01 5.37.01 12c0 2.11.55 4.17 1.6 5.98L0 24l6.17-1.62A11.94 11.94 0 0012.01 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.49-8.52zM12 21.82c-1.8 0-3.56-.48-5.1-1.39l-.36-.21-3.66.96.98-3.56-.23-.37A9.79 9.79 0 012.2 12c0-5.41 4.39-9.8 9.8-9.8 2.62 0 5.08 1.02 6.93 2.87A9.77 9.77 0 0121.8 12c0 5.41-4.39 9.82-9.8 9.82zm5.41-7.37c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.28-.47-2.43-1.5-.9-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.03-1.05 2.52s1.08 2.93 1.23 3.13c.15.2 2.13 3.26 5.17 4.57.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/>
+        </svg>
+      </a>
+    </div>
   </body>
 </html>
 
@@ -150,5 +173,42 @@ const hasHeader = showNavbar || miniHeader;
     document.querySelectorAll('[data-animate]').forEach(function (el) {
       observer.observe(el);
     });
+  })();
+</script>
+
+<!-- FLOATING GROUP: flechas + footer avoidance -->
+<script is:inline>
+  (function () {
+    var group  = document.getElementById('float-group');
+    var btnUp  = document.getElementById('btn-up');
+    var btnDn  = document.getElementById('btn-down');
+    if (!group || !btnUp || !btnDn) return;
+
+    var BOTTOM_BASE = 24;
+
+    function show(el) {
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+      el.style.pointerEvents = 'auto';
+    }
+    function hide(el, dir) {
+      el.style.opacity = '0';
+      el.style.transform = dir === 'up' ? 'translateY(-4px)' : 'translateY(4px)';
+      el.style.pointerEvents = 'none';
+    }
+
+    function update() {
+      var scrollTop = window.scrollY;
+      var scrollMax = document.documentElement.scrollHeight - window.innerHeight;
+
+      /* Flechas: arriba oculta al inicio, abajo oculta al final */
+      if (scrollTop < 60) { hide(btnUp, 'up'); } else { show(btnUp); }
+      if (scrollTop >= scrollMax - 40) { hide(btnDn, 'down'); } else { show(btnDn); }
+
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
   })();
 </script>

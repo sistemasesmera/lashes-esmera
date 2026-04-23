@@ -2,38 +2,64 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout>
-  <section class="min-h-screen flex items-center justify-center bg-white px-6">
-    <div class="text-center max-w-xl">
-      <!-- Código -->
-      <h1 class="text-6xl md:text-7xl font-bold text-black mb-4">404</h1>
+<Layout
+  title="Página no encontrada | Lashes Esmera"
+  description="La página que buscas no existe. Vuelve al inicio de Lashes Esmera."
+  showFooter={true}
+>
 
-      <!-- Título -->
-      <h2 class="text-2xl md:text-3xl font-semibold mb-4">
-        Página no encontrada
-      </h2>
+  <section class="relative overflow-hidden flex items-center justify-center text-center px-6" style="min-height: calc(100vh - 68px);">
 
-      <!-- Texto -->
-      <p class="text-gray-600 mb-10">
-        La página que buscas no existe o ha sido movida.
+    <!-- Blob decorativo -->
+    <div class="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-full" style="background: radial-gradient(ellipse 65% 70% at 50% 20%, rgba(241,205,240,0.22) 0%, transparent 70%);"></div>
+
+    <div class="relative z-10 max-w-lg mx-auto">
+
+      <!-- Número 404 decorativo -->
+      <p class="font-bold select-none leading-none mb-4" style="font-size: clamp(7rem, 20vw, 10rem); color: #f1cdf0; line-height: 1;">
+        404
       </p>
 
-      <!-- Botones -->
-      <div class="flex flex-col md:flex-row justify-center gap-4">
+      <h1 class="text-2xl md:text-3xl font-bold tracking-tight mb-4" style="color: #2d1229;">
+        Esta página no existe
+      </h1>
+      <p class="text-base leading-relaxed mb-10 max-w-sm mx-auto" style="color: #9c7a9a;">
+        La URL que buscas no está disponible. Puede que haya sido movida o eliminada.
+      </p>
+
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
         <a
           href="/"
-          class="bg-black text-white px-8 py-3 rounded-full text-sm hover:bg-gray-800 transition"
+          class="text-white px-8 py-3.5 rounded-full text-sm font-semibold tracking-wide hover:scale-105 transition-all duration-200"
+          style="background: linear-gradient(135deg, #c9a0c7 0%, #9c5a96 100%); box-shadow: 0 4px 18px rgba(156,90,150,0.25);"
         >
           Volver al inicio
         </a>
-
         <a
-          href="/formacion"
-          class="border border-black px-8 py-3 rounded-full text-sm hover:bg-black hover:text-white transition"
+          href="/contacto"
+          class="px-8 py-3.5 rounded-full text-sm font-medium tracking-wide hover:scale-105 transition-all duration-200"
+          style="border: 1.5px solid rgba(201,160,199,0.4); color: #7a4a78;"
+          onmouseover="this.style.background='#fdf0fd';" onmouseout="this.style.background='';"
         >
-          Ver formación
+          Contactar
         </a>
       </div>
+
+      <!-- Links útiles -->
+      <div class="mt-12 pt-8 flex flex-wrap justify-center gap-x-6 gap-y-2" style="border-top: 1px solid rgba(201,160,199,0.2);">
+        {[
+          { href: "/servicios",      label: "Servicios" },
+          { href: "/formacion",      label: "Formación" },
+          { href: "/sobre-nosotros", label: "Nosotros" },
+          { href: "/tienda",         label: "Tienda" },
+        ].map(l => (
+          <a href={l.href} class="text-sm transition-colors duration-200 hover:underline underline-offset-2" style="color: #b89fb7;">
+            {l.label}
+          </a>
+        ))}
+      </div>
+
     </div>
   </section>
+
 </Layout>

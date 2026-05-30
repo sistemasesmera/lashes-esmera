@@ -128,18 +128,34 @@ const cursosOrdenados = cursos.sort(
   <section id="cursos" class="py-28 px-6 bg-white">
     <div class="max-w-6xl mx-auto">
 
-      <div data-animate class="text-center mb-16">
+      <div data-animate class="text-center mb-10">
         <p class="text-xs uppercase tracking-[0.38em] font-medium mb-4" style="color: #c9a0c7;">Programa formativo</p>
         <h2 class="text-3xl md:text-4xl font-bold tracking-tight" style="color: #2d1229;">Nuestros cursos</h2>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-7">
+      <!-- Filtros -->
+      <div data-animate class="flex justify-center gap-3 mb-12 flex-wrap">
+        {["Todos", "Presencial", "Online"].map(f => (
+          <button
+            data-filter={f}
+            class="filter-btn text-xs font-semibold uppercase tracking-widest px-6 py-2.5 rounded-full transition-all duration-200"
+            style={f === "Todos"
+              ? "background:#2d1229; color:#f1cdf0; border:1.5px solid #2d1229;"
+              : "background:transparent; color:#9c7a9a; border:1.5px solid rgba(201,160,199,0.4);"}
+          >
+            {f}
+          </button>
+        ))}
+      </div>
+
+      <div id="cursos-grid" class="grid md:grid-cols-3 gap-7">
         {cursosOrdenados.map((curso, i) => (
           <a
             href={`/formacion/${curso.id}`}
+            data-modality={curso.data.modality}
             data-animate
             data-delay={String(i * 120)}
-            class="group overflow-hidden flex flex-col rounded-2xl bg-white transition-all duration-300 hover:-translate-y-1.5"
+            class="curso-card group overflow-hidden flex flex-col rounded-2xl bg-white transition-all duration-300 hover:-translate-y-1.5"
             style="border: 1px solid rgba(201,160,199,0.2); box-shadow: 0 2px 16px rgba(156,90,150,0.06);"
             onmouseover="this.style.boxShadow='0 12px 40px rgba(156,90,150,0.14)'; this.style.borderColor='rgba(201,160,199,0.4)';"
             onmouseout="this.style.boxShadow='0 2px 16px rgba(156,90,150,0.06)'; this.style.borderColor='rgba(201,160,199,0.2)';"
@@ -256,5 +272,38 @@ const cursosOrdenados = cursos.sort(
       </div>
     </div>
   </section>
+
+<script is:inline>
+  (function () {
+    var btns  = document.querySelectorAll('.filter-btn');
+    var cards = document.querySelectorAll('.curso-card');
+
+    btns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var filter = btn.getAttribute('data-filter');
+
+        // Actualizar estilos de botones
+        btns.forEach(function (b) {
+          if (b === btn) {
+            b.style.background = '#2d1229';
+            b.style.color      = '#f1cdf0';
+            b.style.borderColor = '#2d1229';
+          } else {
+            b.style.background  = 'transparent';
+            b.style.color       = '#9c7a9a';
+            b.style.borderColor = 'rgba(201,160,199,0.4)';
+          }
+        });
+
+        // Mostrar / ocultar tarjetas
+        cards.forEach(function (card) {
+          var modality = card.getAttribute('data-modality');
+          var show = filter === 'Todos' || modality === filter;
+          card.style.display = show ? '' : 'none';
+        });
+      });
+    });
+  })();
+</script>
 
 </Layout>

@@ -1,0 +1,326 @@
+---
+// Widget conversacional — Asistente Virtual de Lashes Esmera
+---
+
+<style>
+  @keyframes cw-bounce {
+    0%, 80%, 100% { transform: translateY(0); opacity: 0.3; }
+    40%            { transform: translateY(-5px); opacity: 1; }
+  }
+  .cw-dot { animation: cw-bounce 1.3s ease-in-out infinite; }
+  .cw-dot:nth-child(2) { animation-delay: 0.18s; }
+  .cw-dot:nth-child(3) { animation-delay: 0.36s; }
+
+</style>
+
+<div
+  id="cw-root"
+  style="position:fixed; bottom:24px; right:24px; z-index:50; display:flex; flex-direction:column-reverse; align-items:flex-end; gap:12px;"
+>
+
+  <!-- ── Panel ─────────────────────────────────────── -->
+  <div
+    id="cw-panel"
+    style="display:none; flex-direction:column; width:min(340px,calc(100vw - 48px)); border-radius:20px; overflow:hidden;
+           box-shadow:0 16px 64px rgba(45,18,41,0.18), 0 2px 12px rgba(45,18,41,0.08);
+           border:1px solid rgba(201,160,199,0.2);"
+  >
+
+    <!-- Header -->
+    <div style="background:#2d1229; padding:16px 18px; display:flex; align-items:center; justify-content:space-between;">
+      <div style="display:flex; align-items:center; gap:12px;">
+
+        <!-- Avatar -->
+        <div style="position:relative; width:42px; height:42px; flex-shrink:0;">
+          <div style="width:42px; height:42px; border-radius:50%; background:rgba(241,205,240,0.12); border:1.5px solid rgba(241,205,240,0.3); display:flex; align-items:center; justify-content:center;">
+            <svg width="22" height="22" fill="none" stroke="white" stroke-width="1.4" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z"/>
+            </svg>
+          </div>
+          <div style="position:absolute; bottom:1px; right:1px; width:10px; height:10px; border-radius:50%; background:#4ade80; border:2px solid #2d1229;"></div>
+        </div>
+
+        <div>
+          <p style="color:white; font-size:13.5px; font-weight:700; font-family:'Montserrat',sans-serif; line-height:1.2; letter-spacing:0.01em;">
+            Asistente Virtual
+          </p>
+          <p style="color:rgba(255,255,255,0.4); font-size:10.5px; font-family:'Montserrat',sans-serif; margin-top:3px; letter-spacing:0.03em;">
+            Lashes Esmera · En línea
+          </p>
+        </div>
+      </div>
+
+      <button id="cw-close" aria-label="Cerrar asistente"
+        style="background:none; border:none; cursor:pointer; color:rgba(255,255,255,0.35); padding:4px; display:flex; border-radius:6px; transition:color 0.15s;"
+        onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.35)'"
+      >
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mensajes -->
+    <div
+      id="cw-messages"
+      style="background:#fdf6fd; padding:18px 16px; min-height:210px; max-height:320px; overflow-y:auto; display:flex; flex-direction:column; gap:14px;"
+    ></div>
+
+    <!-- Input -->
+    <div id="cw-input-area" style="display:none; background:white; border-top:1px solid rgba(201,160,199,0.2); padding:12px 14px;">
+      <div style="display:flex; gap:8px; align-items:center;">
+        <input
+          id="cw-input"
+          type="text"
+          placeholder="Escribe tu respuesta..."
+          style="flex:1; font-size:13px; padding:10px 16px; border-radius:99px; border:1.5px solid rgba(201,160,199,0.4); background:#fdf6fd; color:#2d1229; font-family:'Montserrat',sans-serif; outline:none; transition:border-color 0.2s;"
+          onfocus="this.style.borderColor='rgba(156,90,150,0.6)'"
+          onblur="this.style.borderColor='rgba(201,160,199,0.4)'"
+        />
+        <button
+          id="cw-send"
+          aria-label="Enviar"
+          style="width:38px; height:38px; border-radius:50%; background:#2d1229; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 3px 10px rgba(45,18,41,0.25); transition:transform 0.15s;"
+          onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"
+        >
+          <svg width="14" height="14" fill="none" stroke="#f1cdf0" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Botón toggle ───────────────────────────────── -->
+  <div style="position:relative; display:flex; align-items:center; justify-content:center;">
+
+    <button
+      id="cw-toggle"
+      aria-label="Abrir asistente virtual"
+      style="width:56px; height:56px; border-radius:50%; background:#f1cdf0; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 22px rgba(45,18,41,0.22); position:relative; z-index:1; transition:transform 0.2s;"
+      onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'"
+    >
+      <svg id="cw-icon-bot" width="26" height="26" fill="none" stroke="#2d1229" stroke-width="1.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"/>
+      </svg>
+      <svg id="cw-icon-x" width="20" height="20" fill="none" stroke="#2d1229" stroke-width="2.2" viewBox="0 0 24 24" style="display:none;">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+</div>
+
+<script is:inline>
+(function () {
+  var panel    = document.getElementById('cw-panel');
+  var toggle   = document.getElementById('cw-toggle');
+  var closeBtn = document.getElementById('cw-close');
+  var msgs     = document.getElementById('cw-messages');
+  var inpArea  = document.getElementById('cw-input-area');
+  var inp      = document.getElementById('cw-input');
+  var sendBtn  = document.getElementById('cw-send');
+  var iconBot  = document.getElementById('cw-icon-bot');
+  var iconX    = document.getElementById('cw-icon-x');
+
+  if (!toggle) return;
+
+  var isOpen  = false;
+  var step    = 0;
+  var started = false;
+  var lead    = { interest: '', name: '', email: '', phone: '' };
+
+  function scroll() { msgs.scrollTop = msgs.scrollHeight; }
+
+  function botAvatar() {
+    var av = document.createElement('div');
+    av.style.cssText = 'width:26px;height:26px;border-radius:50%;background:#2d1229;flex-shrink:0;display:flex;align-items:center;justify-content:center;';
+    av.innerHTML = '<svg width="13" height="13" fill="none" stroke="white" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z"/></svg>';
+    return av;
+  }
+
+  function showTyping() {
+    var wrap = document.createElement('div');
+    wrap.id = 'cw-typing';
+    wrap.style.cssText = 'display:flex;align-items:flex-end;gap:8px;';
+    var bubble = document.createElement('div');
+    bubble.style.cssText = 'background:white;padding:11px 14px;border-radius:14px;border-bottom-left-radius:4px;display:flex;gap:5px;align-items:center;border:1px solid rgba(201,160,199,0.2);box-shadow:0 1px 4px rgba(45,18,41,0.06);';
+    bubble.innerHTML = '<div class="cw-dot" style="width:7px;height:7px;border-radius:50%;background:#c9a0c7;"></div><div class="cw-dot" style="width:7px;height:7px;border-radius:50%;background:#c9a0c7;"></div><div class="cw-dot" style="width:7px;height:7px;border-radius:50%;background:#c9a0c7;"></div>';
+    wrap.appendChild(botAvatar());
+    wrap.appendChild(bubble);
+    msgs.appendChild(wrap);
+    scroll();
+    return wrap;
+  }
+
+  function botMsg(text, delay) {
+    return new Promise(function (resolve) {
+      var typing = showTyping();
+      setTimeout(function () {
+        typing.remove();
+        var wrap = document.createElement('div');
+        wrap.style.cssText = 'display:flex;align-items:flex-end;gap:8px;';
+        var bubble = document.createElement('div');
+        bubble.style.cssText = 'background:white;color:#2d1229;font-size:13px;line-height:1.55;padding:11px 14px;border-radius:14px;border-bottom-left-radius:4px;max-width:225px;font-family:"Montserrat",sans-serif;border:1px solid rgba(201,160,199,0.2);box-shadow:0 1px 4px rgba(45,18,41,0.06);';
+        bubble.textContent = text;
+        wrap.appendChild(botAvatar());
+        wrap.appendChild(bubble);
+        msgs.appendChild(wrap);
+        scroll();
+        resolve();
+      }, delay || 700);
+    });
+  }
+
+  function userMsg(text) {
+    var wrap = document.createElement('div');
+    wrap.style.cssText = 'display:flex;justify-content:flex-end;';
+    var bubble = document.createElement('div');
+    bubble.style.cssText = 'background:#2d1229;color:#f1cdf0;font-size:13px;line-height:1.55;padding:11px 14px;border-radius:14px;border-bottom-right-radius:4px;max-width:225px;font-family:"Montserrat",sans-serif;';
+    bubble.textContent = text;
+    wrap.appendChild(bubble);
+    msgs.appendChild(wrap);
+    scroll();
+  }
+
+  function quickReplies(options, onSelect) {
+    var container = document.createElement('div');
+    container.style.cssText = 'display:flex;flex-direction:column;gap:7px;padding-left:34px;';
+    options.forEach(function (opt) {
+      var btn = document.createElement('button');
+      btn.textContent = opt;
+      btn.style.cssText = 'text-align:left;font-size:12px;padding:9px 14px;border-radius:99px;border:1.5px solid rgba(156,90,150,0.35);color:#5c2d5a;background:white;cursor:pointer;font-family:"Montserrat",sans-serif;font-weight:500;transition:all 0.15s;';
+      btn.addEventListener('mouseover', function () { btn.style.background='#f1cdf0'; btn.style.borderColor='rgba(156,90,150,0.6)'; });
+      btn.addEventListener('mouseout',  function () { btn.style.background='white';  btn.style.borderColor='rgba(156,90,150,0.35)'; });
+      btn.addEventListener('click', function () {
+        container.remove();
+        onSelect(opt);
+      });
+      container.appendChild(btn);
+    });
+    msgs.appendChild(container);
+    scroll();
+  }
+
+  function showInput(type, placeholder) {
+    inp.type = type || 'text';
+    inp.placeholder = placeholder || 'Escribe tu respuesta...';
+    inp.value = '';
+    inpArea.style.display = 'block';
+    setTimeout(function () { inp.focus(); }, 80);
+  }
+
+  function hideInput() { inpArea.style.display = 'none'; }
+
+  function whatsappLink() {
+    var wrap = document.createElement('div');
+    wrap.style.cssText = 'display:flex;padding-left:34px;margin-top:2px;';
+    var a = document.createElement('a');
+    a.href = 'https://wa.me/34600000000';
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = 'Escribir por WhatsApp';
+    a.style.cssText = 'font-size:12px;padding:8px 18px;border-radius:99px;background:#25D366;color:white;text-decoration:none;font-family:"Montserrat",sans-serif;font-weight:600;';
+    wrap.appendChild(a);
+    msgs.appendChild(wrap);
+    scroll();
+  }
+
+  function startConversation() {
+    botMsg('Hola, soy tu asistente virtual de Lashes Esmera.', 900)
+      .then(function () { return botMsg('Estoy aquí para ayudarte. ¿Qué necesitas hoy?', 700); })
+      .then(function () {
+        quickReplies(
+          ['Información sobre cursos', 'Reservar una cita', 'Otra consulta'],
+          function (opt) {
+            lead.interest = opt;
+            userMsg(opt);
+            step = 1;
+            botMsg('Anotado. ¿Me dices tu nombre?', 700)
+              .then(function () { showInput('text', 'Tu nombre completo...'); });
+          }
+        );
+      });
+  }
+
+  function handleSend() {
+    var val = inp.value.trim();
+    if (!val) return;
+
+    if (step === 1) {
+      lead.name = val;
+      userMsg(val);
+      hideInput();
+      step = 2;
+      botMsg('Encantada, ' + lead.name + '. ¿Cuál es tu email de contacto?', 800)
+        .then(function () { showInput('email', 'correo@ejemplo.com'); });
+
+    } else if (step === 2) {
+      if (!val.includes('@') || !val.includes('.')) {
+        botMsg('Necesito un email válido para poder contactarte.', 500);
+        return;
+      }
+      lead.email = val;
+      userMsg(val);
+      hideInput();
+      step = 3;
+      botMsg('Perfecto. Por último, ¿cuál es tu número de teléfono?', 700)
+        .then(function () { showInput('tel', '600 000 000'); });
+
+    } else if (step === 3) {
+      lead.phone = val;
+      userMsg(val);
+      hideInput();
+      step = 4;
+
+      botMsg('Procesando tu solicitud...', 600)
+        .then(function () {
+          return fetch('https://esmera-manager-backend.onrender.com/leads', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name:       lead.name,
+              email:      lead.email,
+              phone:      lead.phone,
+              course:     lead.interest,
+              publicidad: false
+            })
+          });
+        })
+        .then(function (res) {
+          if (!res.ok) throw new Error();
+          return botMsg('¡Todo listo, ' + lead.name + '! Un miembro del equipo se pondrá en contacto contigo en breve.', 700);
+        })
+        .then(function () {
+          return botMsg('Si lo prefieres, también puedes escribirnos directamente.', 700);
+        })
+        .then(function () { whatsappLink(); })
+        .catch(function () {
+          botMsg('Ups, algo ha fallado. Por favor escríbenos por WhatsApp y te atendemos enseguida.', 600)
+            .then(function () { whatsappLink(); });
+        });
+    }
+  }
+
+  function openChat() {
+    isOpen = true;
+    panel.style.display = 'flex';
+    iconBot.style.display = 'none';
+    iconX.style.display   = 'block';
+if (!started) { started = true; startConversation(); }
+  }
+
+  function closeChat() {
+    isOpen = false;
+    panel.style.display = 'none';
+    iconBot.style.display = 'block';
+    iconX.style.display   = 'none';
+  }
+
+  toggle.addEventListener('click',  function () { isOpen ? closeChat() : openChat(); });
+  closeBtn.addEventListener('click', closeChat);
+  sendBtn.addEventListener('click',  handleSend);
+  inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') handleSend(); });
+})();
+</script>
